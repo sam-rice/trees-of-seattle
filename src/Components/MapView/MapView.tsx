@@ -5,7 +5,12 @@ import "./_MapView.scss"
 const MapView = () => {
   return (
     <>
-      <h1>Map View</h1>
+      <main className="map-main">
+        <div className="map-container">
+
+        </div>
+      </main>
+
       <Outlet />
     </>
   )

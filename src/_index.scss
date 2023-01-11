@@ -13,6 +13,14 @@ body {
   background-attachment: fixed;
 }
 
+#root {
+  height: 100vh;
+}
+
+* {
+  font-family: "Jost", sans-serif;
+}
+
 a {
   color: black;
 }

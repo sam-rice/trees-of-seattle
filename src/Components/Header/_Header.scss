@@ -1,2 +1,25 @@
 @use "src/StyleUtilities/variables";
 @use "src/StyleUtilities/mixins";
+
+.header {
+  position: absolute;
+  height: 130px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.site-title {
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 5px;
+  
+  &__inner {
+    font-size: 1rem;
+    margin: 0px 10px;
+  }
+}
