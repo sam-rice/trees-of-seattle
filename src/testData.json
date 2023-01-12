@@ -1,0 +1,44 @@
+[
+  {
+    "id": "1",
+    "speciesCommon": "Deodar Cedar",
+    "speciesSci": "Cedrus Deodora",
+    "height": "110",
+    "circ": "300",
+    "age": "91",
+    "author": "Sam Rice",
+    "img": "src/assets/himalayan.jpeg",
+    "address": "5532 39th Ave NE",
+    "neighborhood": "Bryant",
+    "lat": "47.669460",
+    "long": "-122.285460"
+  },
+  {
+    "id": "2",
+    "speciesCommon": "Deodar Cedar 2",
+    "speciesSci": "Cedrus Deodora 3",
+    "height": "120",
+    "circ": "300",
+    "age": "92",
+    "author": "Peter Tilton",
+    "img": "../../assets/himalayan.jpeg",
+    "address": "123 Greenlake Blvd",
+    "neighborhood": "Greenlake",
+    "lat": "47.681761",
+    "long": "-122.327798"
+  },
+  {
+    "id": "3",
+    "speciesCommon": "Deodar Cedar 3",
+    "speciesSci": "Cedrus Deodora 3",
+    "height": "130",
+    "circ": "300",
+    "age": "93",
+    "author": "Hannah Crane",
+    "img": "../../assets/himalayan.jpeg",
+    "address": "123 Aloha St",
+    "neighborhood": "Capitol Hill",
+    "lat": "47.626510",
+    "long": "-122.314688"
+  }
+]
