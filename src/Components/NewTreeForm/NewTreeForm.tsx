@@ -6,7 +6,7 @@ interface Props {
   addTree: Function
 }
 
-const NewTreeForm: FC<Props> = () => {
+const NewTreeForm: FC<Props> = ({ addTree }) => {
   const [speciesCommon, setSpeciesCommon] = useState("")
   const [speciesSci, setSpeciesSci] = useState("")
   const [address, setAddress] = useState("")
@@ -16,6 +16,14 @@ const NewTreeForm: FC<Props> = () => {
 
   const handleSubmit = (e: React.SyntheticEvent): void => {
     e.preventDefault()
+    addTree({
+      speciesCommon,
+      speciesSci,
+      address,
+      height,
+      circ,
+      age
+    })
   }
 
   return (
