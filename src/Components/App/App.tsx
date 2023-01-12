@@ -1,4 +1,4 @@
-import React from "react"
+import { FC } from "react"
 import { Routes, Route } from "react-router-dom"
 
 import "./_App.scss"
@@ -7,7 +7,7 @@ import MapView from "../MapView/MapView"
 import TreeDetails from "../TreeDetails/TreeDetails"
 import NewTreeForm from "../NewTreeForm/NewTreeForm"
 
-const App = () => {
+const App: FC = () => {
   return (
     <>
       <Header />

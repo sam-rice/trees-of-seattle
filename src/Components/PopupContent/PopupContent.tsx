@@ -2,29 +2,19 @@ import { FC } from "react"
 
 import "./_PopupContent.scss"
 import treeImg from "../../assets/himalayan.jpeg"
+import { TreeObject } from "../../TypeUtilities/Interfaces"
 
 interface Props {
-  data: {
-    id: string
-    speciesCommon: string
-    speciesTaxo: string
-    height: string
-    age: string
-    author: string
-    img: string
-    address: string
-    neighborhood: string
-    lat: string
-    long: string
-  }
+  data: TreeObject
 }
 
 const PopupContent: FC<Props> = ({ data }) => {
   const {
     id,
     speciesCommon,
-    speciesTaxo,
+    speciesSci,
     height,
+    circ,
     age,
     author,
     img,

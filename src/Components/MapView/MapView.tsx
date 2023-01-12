@@ -1,12 +1,14 @@
+import { FC } from "react"
 import { Outlet } from "react-router-dom"
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 
 import "./_MapView.scss"
 import PopupContent from "../PopupContent/PopupContent"
 import testData from "../../testData.json"
+import { TreeObject } from "../../TypeUtilities/Interfaces"
 
-const MapView = () => {
-  const markers = testData.map(tree => {
+const MapView: FC = () => {
+  const markers = testData.map((tree: TreeObject) => {
     return (
       <Marker 
         position={[Number(tree.lat), Number(tree.long)]} 

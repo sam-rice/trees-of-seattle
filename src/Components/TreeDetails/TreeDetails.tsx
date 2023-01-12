@@ -1,7 +1,8 @@
+import { FC } from "react"
 
 import "./_TreeDetails.scss"
 
-const TreeDetails = () => {
+const TreeDetails: FC = () => {
   return (
     <h1>Tree Details</h1>
   )

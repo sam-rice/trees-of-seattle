@@ -2,8 +2,9 @@
   {
     "id": "1",
     "speciesCommon": "Deodar Cedar",
-    "speciesTaxo": "Cedrus Deodora",
+    "speciesSci": "Cedrus Deodora",
     "height": "110",
+    "circ": "300",
     "age": "91",
     "author": "Sam Rice",
     "img": "src/assets/himalayan.jpeg",
@@ -15,8 +16,9 @@
   {
     "id": "2",
     "speciesCommon": "Deodar Cedar 2",
-    "speciesTaxo": "Cedrus Deodora 3",
+    "speciesSci": "Cedrus Deodora 3",
     "height": "120",
+    "circ": "300",
     "age": "92",
     "author": "Peter Tilton",
     "img": "../../assets/himalayan.jpeg",
@@ -28,8 +30,9 @@
   {
     "id": "3",
     "speciesCommon": "Deodar Cedar 3",
-    "speciesTaxo": "Cedrus Deodora 3",
+    "speciesSci": "Cedrus Deodora 3",
     "height": "130",
+    "circ": "300",
     "age": "93",
     "author": "Hannah Crane",
     "img": "../../assets/himalayan.jpeg",

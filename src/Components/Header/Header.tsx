@@ -1,8 +1,8 @@
-import { useState } from "react"
+import { useState, FC } from "react"
 
 import "./_Header.scss"
 
-const Header = () => {
+const Header: FC = () => {
   const [filter, setFilter] = useState("")
 
   return (
