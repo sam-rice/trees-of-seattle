@@ -22,12 +22,11 @@ const NewTreeContainer: FC<Props> = ({ addTree }) => {
   // const [addressError, setAddressError] = useState<string | null>(null)
 
   const postTree = async (formInputs: formInputs) => {
-    const { speciesCommon, speciesSci, address, height, circ, age, author } = formInputs
+    const { speciesCommon, speciesSci, address, height, circ, age, author } =
+      formInputs
     const [lat, long, district] = await getCoordinates(formInputs.address)
-    //POST to server
-    //user response to invoke addTree()
-    addTree({
-      id: Date.now(),
+
+    const body = {
       speciesCommon,
       speciesSci,
       height,
@@ -38,7 +37,17 @@ const NewTreeContainer: FC<Props> = ({ addTree }) => {
       neighborhood: district,
       lat: lat,
       long: long,
-    })
+    }
+    const settings = {
+      method: "POST",
+      body: JSON.stringify(body),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+    const response = await fetch("http://localhost:3001/v1/trees", settings)
+    const newTree = await response.json()
+    addTree(newTree)
   }
 
   const getCoordinates = async (query: string) => {
