@@ -5,7 +5,7 @@ import "./_App.scss"
 import Header from "../Header/Header"
 import MapView from "../MapView/MapView"
 import TreeDetails from "../TreeDetails/TreeDetails"
-import NewTreeForm from "../NewTreeForm/NewTreeForm"
+import NewTreeContainer from "../NewTreeContainer/NewTreeContainer"
 
 const App: FC = () => {
   return (
@@ -15,7 +15,7 @@ const App: FC = () => {
         <Route path="/" element={<MapView />}>
           <Route path=":id" element={<TreeDetails />} />
         </Route>
-        <Route path="/new-tree" element={<NewTreeForm />} />
+        <Route path="/new-tree" element={<NewTreeContainer />} />
       </Routes>
     </>
   )
