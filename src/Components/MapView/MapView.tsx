@@ -7,8 +7,12 @@ import PopupContent from "../PopupContent/PopupContent"
 import testData from "../../testData.json"
 import { TreeObject } from "../../TypeUtilities/Interfaces"
 
-const MapView: FC = () => {
-  const markers = testData.map((tree: TreeObject) => {
+interface Props {
+  trees: TreeObject[]
+}
+
+const MapView: FC<Props> = ({ trees }) => {
+  const markers = trees.map((tree: TreeObject) => {
     return (
       <Marker 
         position={[Number(tree.lat), Number(tree.long)]} 

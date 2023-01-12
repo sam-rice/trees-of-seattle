@@ -3,26 +3,28 @@ import { FC, useState } from "react"
 import "./_NewTreeForm.scss"
 
 interface Props {
-  addTree: Function
+  postTree: Function
 }
 
-const NewTreeForm: FC<Props> = ({ addTree }) => {
+const NewTreeForm: FC<Props> = ({ postTree }) => {
   const [speciesCommon, setSpeciesCommon] = useState("")
   const [speciesSci, setSpeciesSci] = useState("")
   const [address, setAddress] = useState("")
   const [height, setHeight] = useState("")
   const [circ, setCirc] = useState("")
   const [age, setAge] = useState("")
+  const [author, setAuthor] = useState("")
 
   const handleSubmit = (e: React.SyntheticEvent): void => {
     e.preventDefault()
-    addTree({
+    postTree({
       speciesCommon,
       speciesSci,
       address,
       height,
       circ,
-      age
+      age,
+      author
     })
   }
 
@@ -93,6 +95,15 @@ const NewTreeForm: FC<Props> = ({ addTree }) => {
                 onChange={e => setAge(e.target.value)}
               />
               approximate age
+            </label>
+            <label>
+              posted by:
+              <input
+                type="text"
+                placeholder="name"
+                value={author}
+                onChange={e => setAuthor(e.target.value)}
+              />
             </label>
           </div>
         </div>
