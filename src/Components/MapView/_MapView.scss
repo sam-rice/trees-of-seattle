@@ -9,9 +9,17 @@
   width: 100vw;
 }
 
-.map-container {
-  background-color: green;
+#map {
   height: 82%;
   width: 97vw;
   margin-bottom: 3vh;
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+
+.leaflet-popup {
+  width: 300px;
 }
