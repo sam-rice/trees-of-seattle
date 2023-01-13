@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { FC, useState } from "react"
 import { Outlet, useNavigate } from "react-router-dom"
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 
@@ -11,23 +11,26 @@ interface Props {
 }
 
 const MapView: FC<Props> = ({ trees }) => {
+  const [filter, setFilter] = useState("")
   const navigate = useNavigate()
 
   const goToDetails = (id: string | number) => {
     navigate(`/${id}`)
   }
 
-  const markers = trees.map((tree: TreeObject) => {
+  const displayedTrees = filter
+    ? trees.filter(
+        tree =>
+          tree.speciesCommon.toLowerCase().includes(filter.toLowerCase()) ||
+          tree.speciesSci.toLowerCase().includes(filter.toLowerCase())
+      )
+    : trees
+
+  const markers = displayedTrees.map((tree: TreeObject) => {
     return (
-      <Marker 
-        position={[Number(tree.lat), Number(tree.long)]} 
-        key={tree.id}
-      >
+      <Marker position={[Number(tree.lat), Number(tree.long)]} key={tree.id}>
         <Popup minWidth={351}>
-          <PopupContent 
-            data={tree}
-            goToDetails={goToDetails}
-          />
+          <PopupContent data={tree} goToDetails={goToDetails} />
         </Popup>
       </Marker>
     )
@@ -36,6 +39,13 @@ const MapView: FC<Props> = ({ trees }) => {
   return (
     <>
       <main className="map-main">
+        <input
+          className="map-filter"
+          type="text"
+          placeholder="filter trees by species"
+          value={filter}
+          onChange={e => setFilter(e.target.value)}
+        />
         <div id="map">
           <MapContainer
             center={[47.626395, -122.329386]}

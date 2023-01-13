@@ -3,14 +3,22 @@
 
 .map-main {
   display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
   height: 100vh;
   width: 100vw;
 }
 
+.map-filter {
+  margin-bottom: 10px;
+  width: 200px;
+  height: 25px;
+  text-indent: 8px;
+}
+
 #map {
-  height: 82%;
+  height: 80%;
   width: 97vw;
   margin-bottom: 3vh;
   z-index: 1;
