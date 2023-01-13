@@ -1,4 +1,4 @@
-import { useState, FC } from "react"
+import { FC } from "react"
 import { Link } from "react-router-dom"
 
 import "./_Header.scss"
@@ -17,7 +17,11 @@ const Header: FC = () => {
           </h1>
         </Link>
         <div className="header__right">
-          <button>new tree</button>
+          <Link to="/new-tree">
+            <button
+              className="header-button"
+            >new tree</button>
+          </Link>
         </div>
       </nav>
     </header>

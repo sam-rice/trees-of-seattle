@@ -39,13 +39,22 @@ const MapView: FC<Props> = ({ trees }) => {
   return (
     <>
       <main className="map-main">
-        <input
-          className="map-filter"
-          type="text"
-          placeholder="filter trees by species"
-          value={filter}
-          onChange={e => setFilter(e.target.value)}
-        />
+        <div className="map-filter">
+          <label>
+            <span className="label-hidden">filter trees by species name:</span>
+            <input
+              className="map-filter__input"
+              type="text"
+              placeholder="filter trees by species"
+              value={filter}
+              onChange={e => setFilter(e.target.value)}
+            />
+          </label>
+          <button 
+            className="map-filter__button"
+            onClick={() => setFilter("")}
+          >clear</button>
+        </div>
         <div id="map">
           <MapContainer
             center={[47.626395, -122.329386]}

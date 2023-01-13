@@ -11,11 +11,19 @@
 }
 
 .map-filter {
-  margin-bottom: 10px;
-  width: 200px;
-  height: 25px;
-  text-indent: 8px;
+
+  &__input {
+    margin-bottom: 10px;
+    width: 200px;
+    height: 25px;
+    text-indent: 8px;
+  }
+
+  &__button {
+    
+  }
 }
+
 
 #map {
   height: 80%;
