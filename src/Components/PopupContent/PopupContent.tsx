@@ -1,15 +1,14 @@
 import { FC } from "react"
-import { useNavigate } from "react-router-dom"
 
 import "./_PopupContent.scss"
-import treeImg from "../../assets/himalayan.jpeg"
 import { TreeObject } from "../../TypeUtilities/Interfaces"
 
 interface Props {
   data: TreeObject
+  goToDetails: Function
 }
 
-const PopupContent: FC<Props> = ({ data }) => {
+const PopupContent: FC<Props> = ({ data, goToDetails }) => {
   const {
     id,
     speciesCommon,
@@ -20,11 +19,6 @@ const PopupContent: FC<Props> = ({ data }) => {
     img,
     address,
   } = data
-  const navigate = useNavigate()
-
-  const handleClick = () => {
-    navigate(`/${id}`)
-  }
 
   return (
     <div className="popup">
@@ -50,7 +44,7 @@ const PopupContent: FC<Props> = ({ data }) => {
       <div className="popup__right">
         <button 
           className="popup-button"
-          onClick={handleClick}
+          onClick={() => goToDetails(id)}
         >view more</button>
         <div className="popup-img-container">
           <img className="popup-img-container__img" src={img} />

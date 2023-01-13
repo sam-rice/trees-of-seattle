@@ -1,10 +1,9 @@
 import { FC } from "react"
-import { Outlet } from "react-router-dom"
+import { Outlet, useNavigate } from "react-router-dom"
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 
 import "./_MapView.scss"
 import PopupContent from "../PopupContent/PopupContent"
-import testData from "../../testData.json"
 import { TreeObject } from "../../TypeUtilities/Interfaces"
 
 interface Props {
@@ -12,6 +11,12 @@ interface Props {
 }
 
 const MapView: FC<Props> = ({ trees }) => {
+  const navigate = useNavigate()
+
+  const goToDetails = (id: string | number) => {
+    navigate(`/${id}`)
+  }
+
   const markers = trees.map((tree: TreeObject) => {
     return (
       <Marker 
@@ -19,7 +24,10 @@ const MapView: FC<Props> = ({ trees }) => {
         key={tree.id}
       >
         <Popup minWidth={351}>
-          <PopupContent data={tree} />
+          <PopupContent 
+            data={tree}
+            goToDetails={goToDetails}
+          />
         </Popup>
       </Marker>
     )
