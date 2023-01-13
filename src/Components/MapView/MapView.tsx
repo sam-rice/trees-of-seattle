@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { FC, useState } from "react"
 import { Outlet, useNavigate } from "react-router-dom"
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 
@@ -11,23 +11,26 @@ interface Props {
 }
 
 const MapView: FC<Props> = ({ trees }) => {
+  const [filter, setFilter] = useState("")
   const navigate = useNavigate()
 
   const goToDetails = (id: string | number) => {
     navigate(`/${id}`)
   }
 
-  const markers = trees.map((tree: TreeObject) => {
+  const displayedTrees = filter
+    ? trees.filter(
+        tree =>
+          tree.speciesCommon.toLowerCase().includes(filter.toLowerCase()) ||
+          tree.speciesSci.toLowerCase().includes(filter.toLowerCase())
+      )
+    : trees
+
+  const markers = displayedTrees.map((tree: TreeObject) => {
     return (
-      <Marker 
-        position={[Number(tree.lat), Number(tree.long)]} 
-        key={tree.id}
-      >
+      <Marker position={[Number(tree.lat), Number(tree.long)]} key={tree.id}>
         <Popup minWidth={351}>
-          <PopupContent 
-            data={tree}
-            goToDetails={goToDetails}
-          />
+          <PopupContent data={tree} goToDetails={goToDetails} />
         </Popup>
       </Marker>
     )
@@ -36,10 +39,26 @@ const MapView: FC<Props> = ({ trees }) => {
   return (
     <>
       <main className="map-main">
+        <div className="map-filter">
+          <label>
+            <span className="label-hidden">filter trees by species name:</span>
+            <input
+              className="map-filter__input"
+              type="text"
+              placeholder="filter trees by species"
+              value={filter}
+              onChange={e => setFilter(e.target.value)}
+            />
+          </label>
+          <button 
+            className="map-filter__button"
+            onClick={() => setFilter("")}
+          >clear</button>
+        </div>
         <div id="map">
           <MapContainer
             center={[47.626395, -122.329386]}
-            zoom={13}
+            zoom={12}
             minZoom={12}
           >
             <TileLayer
