@@ -58,7 +58,7 @@ const MapView: FC<Props> = ({ trees }) => {
         <div id="map">
           <MapContainer
             center={[47.626395, -122.329386]}
-            zoom={13}
+            zoom={12}
             minZoom={12}
           >
             <TileLayer
