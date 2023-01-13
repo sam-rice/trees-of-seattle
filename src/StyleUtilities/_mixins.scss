@@ -1,0 +1,12 @@
+@use "./variables";
+
+@mixin themeButton() {
+  border-radius: 25px;
+  transition-duration: 400ms;
+  background-color: #00000000;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #ececec;
+  }
+}

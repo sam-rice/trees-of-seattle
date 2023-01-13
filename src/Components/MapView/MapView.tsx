@@ -18,7 +18,7 @@ const MapView: FC<Props> = ({ trees }) => {
         position={[Number(tree.lat), Number(tree.long)]} 
         key={tree.id}
       >
-        <Popup>
+        <Popup minWidth={351}>
           <PopupContent data={tree} />
         </Popup>
       </Marker>
@@ -31,8 +31,8 @@ const MapView: FC<Props> = ({ trees }) => {
         <div id="map">
           <MapContainer
             center={[47.626395, -122.329386]}
-            zoom={12}
-            minZoom={13}
+            zoom={13}
+            minZoom={12}
           >
             <TileLayer
               attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
