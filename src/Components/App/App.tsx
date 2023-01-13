@@ -26,16 +26,12 @@ const App: FC = () => {
     setTrees([...trees, tree])
   }
 
-  const findTree = (id: number): TreeObject | null => {
-    return trees.find(tree => Number(tree.id) === id) || null
-  }
-
   return (
     <>
       <Header />
       <Routes>
         <Route path="/" element={<MapView trees={trees}/>}>
-          <Route path=":id" element={<TreeDetails findTree={findTree} />} />
+          <Route path=":id" element={<TreeDetails trees={trees} />} />
         </Route>
         <Route path="/new-tree" element={<NewTreeContainer addTree={addTree} />} />
       </Routes>

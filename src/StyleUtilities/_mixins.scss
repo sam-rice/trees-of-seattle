@@ -2,11 +2,15 @@
 
 @mixin themeButton() {
   border-radius: 25px;
-  transition-duration: 400ms;
   background-color: #00000000;
 
   &:hover {
-    cursor: pointer;
     background-color: #ececec;
   }
+}
+
+@mixin floatingContainer() {
+  width: min(97vw, 1380px);
+  height: 70%;
+  padding: 60px;
 }
