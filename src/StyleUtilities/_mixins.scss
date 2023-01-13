@@ -1,0 +1,16 @@
+@use "./variables";
+
+@mixin themeButton() {
+  border-radius: 25px;
+  background-color: #00000000;
+
+  &:hover {
+    background-color: #ececec;
+  }
+}
+
+@mixin floatingContainer() {
+  width: min(97vw, 1380px);
+  height: 70%;
+  padding: 60px;
+}

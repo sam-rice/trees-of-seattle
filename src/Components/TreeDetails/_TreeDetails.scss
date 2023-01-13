@@ -1,2 +1,104 @@
 @use "src/StyleUtilities/variables";
 @use "src/StyleUtilities/mixins";
+
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 400ms;
+  z-index: 2;
+}
+
+.ReactModal__Overlay--after-open{
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close{
+  opacity: 0;
+}
+
+.modal {
+  @include mixins.floatingContainer();
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  align-items: flex-start;
+  background-color: variables.$container-gray;
+  z-index: 10;
+}
+
+.details-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 50%;
+  height: min(100%, 550px);
+}
+
+.details-left__species {
+  
+  &__common {
+    font-weight: 400;
+    margin-bottom: 5px;
+  }
+  
+  &__sci {
+    font-family: "EB Garamond", serif;
+    font-style: italic;
+    margin: 0px;
+  }
+}
+
+.details-left__location {
+
+  & p {
+    margin: 0px;
+  }
+
+  &__neighborhood {
+    font-family: "EB Garamond", serif;
+    font-style: italic;
+  }
+}
+
+.details-left__table {
+  width: 300px;
+}
+
+.details-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+}
+
+.details-right__img-container {
+  position: relative;
+  height: 90%;
+  width: 90%;
+
+  &__img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+  }
+}
+
+.modal-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  border: none;
+  background-color: #00000000;
+
+  &:hover {
+    color: variables.$text-gray;
+  }
+}

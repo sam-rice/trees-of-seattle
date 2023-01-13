@@ -13,13 +13,10 @@
   height: 82%;
   width: 97vw;
   margin-bottom: 3vh;
+  z-index: 1;
 }
 
 .leaflet-container {
   width: 100%;
   height: 100%;
-}
-
-.leaflet-popup {
-  width: 300px;
 }

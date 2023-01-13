@@ -1,0 +1,83 @@
+@use "src/StyleUtilities/variables";
+@use "src/StyleUtilities/mixins";
+
+.leaflet-popup {
+  width: 400px;
+  border-radius: 0px;
+}
+
+.leaflet-popup-content-wrapper {
+  background-color: variables.$popup-gray;
+  border-radius: 0px;
+}
+
+.leaflet-popup-tip {
+  background-color: variables.$popup-gray;
+}
+
+.popup {
+  display: flex;
+  justify-content: space-between;
+  height: 215px;
+}
+
+.popup__left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 60%;
+
+  & table {
+    width: 75%;
+  }
+}
+
+.popup-common {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.popup-sci {
+  display: block;
+  font-family: "EB Garamond", serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: variables.$text-gray;
+  margin-bottom: 12px;
+}
+
+.popup-address {
+  font-size: 1rem;
+}
+
+.popup__right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 40%;
+
+  & span {
+    margin-bottom: 4px;
+    color: variables.$text-gray;
+  }
+}
+
+.popup-button {
+  @include mixins.themeButton();
+  border: 1px solid black;
+  height: 32px;
+  width: 100px;
+}
+
+.popup-img-container {
+  height: 60%;
+  width: 100%;
+  overflow: hidden;
+
+  &__img {
+    height: 100%;
+    float: right;
+  }
+}

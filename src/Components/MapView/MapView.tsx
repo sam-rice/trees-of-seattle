@@ -1,10 +1,9 @@
 import { FC } from "react"
-import { Outlet } from "react-router-dom"
+import { Outlet, useNavigate } from "react-router-dom"
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 
 import "./_MapView.scss"
 import PopupContent from "../PopupContent/PopupContent"
-import testData from "../../testData.json"
 import { TreeObject } from "../../TypeUtilities/Interfaces"
 
 interface Props {
@@ -12,14 +11,23 @@ interface Props {
 }
 
 const MapView: FC<Props> = ({ trees }) => {
+  const navigate = useNavigate()
+
+  const goToDetails = (id: string | number) => {
+    navigate(`/${id}`)
+  }
+
   const markers = trees.map((tree: TreeObject) => {
     return (
       <Marker 
         position={[Number(tree.lat), Number(tree.long)]} 
         key={tree.id}
       >
-        <Popup>
-          <PopupContent data={tree} />
+        <Popup minWidth={351}>
+          <PopupContent 
+            data={tree}
+            goToDetails={goToDetails}
+          />
         </Popup>
       </Marker>
     )
@@ -31,8 +39,8 @@ const MapView: FC<Props> = ({ trees }) => {
         <div id="map">
           <MapContainer
             center={[47.626395, -122.329386]}
-            zoom={12}
-            minZoom={13}
+            zoom={13}
+            minZoom={12}
           >
             <TileLayer
               attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'

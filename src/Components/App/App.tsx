@@ -1,4 +1,4 @@
-import { useState, FC } from "react"
+import { useState, useEffect, FC } from "react"
 import { Routes, Route } from "react-router-dom"
 
 import "./_App.scss"
@@ -12,6 +12,16 @@ import { TreeObject } from "../../TypeUtilities/Interfaces"
 const App: FC = () => {
   const [trees, setTrees] = useState<TreeObject[]>([])
 
+  useEffect(() => {
+    getAllTrees()
+  }, [])
+
+  const getAllTrees = async () => {
+    const response = await fetch("http://localhost:3001/v1/trees")
+    const data = await response.json()
+    setTrees(data)
+  }
+
   const addTree = (tree: TreeObject): void => {
     setTrees([...trees, tree])
   }
@@ -21,7 +31,7 @@ const App: FC = () => {
       <Header />
       <Routes>
         <Route path="/" element={<MapView trees={trees}/>}>
-          <Route path=":id" element={<TreeDetails />} />
+          <Route path=":id" element={<TreeDetails trees={trees} />} />
         </Route>
         <Route path="/new-tree" element={<NewTreeContainer addTree={addTree} />} />
       </Routes>
