@@ -10,7 +10,10 @@ const Header: FC = () => {
     <header className="header">
       <nav className="nav">
         <Link to="/">
-          <h1 className="site-title">
+          <h1 
+            className="site-title"
+            data-cy="site-title"
+          >
             TREES
             <span className="site-title__inner">OF</span>
             SEATTLE
@@ -20,6 +23,7 @@ const Header: FC = () => {
           <Link to="/new-tree">
             <button
               className="header-button"
+              data-cy="new-tree-button"
             >new tree</button>
           </Link>
         </div>

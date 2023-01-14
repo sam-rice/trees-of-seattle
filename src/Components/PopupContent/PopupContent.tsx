@@ -24,9 +24,18 @@ const PopupContent: FC<Props> = ({ data, goToDetails }) => {
     <div className="popup">
       <div className="popup__left">
         <div className="popup__left__top">
-          <h2 className="popup-common">{speciesCommon}</h2>
-          <span className="popup-sci">{speciesSci}</span>
-          <span className="popup-address">{address}</span>
+          <h2 
+            className="popup-common"
+            data-cy="popup-common"
+          >{speciesCommon}</h2>
+          <span 
+            className="popup-sci"
+            data-cy="popup-sci"
+          >{speciesSci}</span>
+          <span 
+            className="popup-address"
+            data-cy="popup-address"
+          >{address}</span>
         </div>
         <table>
           <tbody>
@@ -45,11 +54,16 @@ const PopupContent: FC<Props> = ({ data, goToDetails }) => {
         <button 
           className="popup-button"
           onClick={() => goToDetails(id)}
+          data-cy="popup-button"
         >view more</button>
         <div className="popup-img-container">
-          <img className="popup-img-container__img" src={img} />
+          <img 
+            className="popup-img-container__img" 
+            src={img}
+            data-cy="popup-thumbnail"
+          />
         </div>
-        <span>posted by: {author}</span>
+        <span data-cy="popup-author">posted by: {author}</span>
       </div>
     </div>
   )
