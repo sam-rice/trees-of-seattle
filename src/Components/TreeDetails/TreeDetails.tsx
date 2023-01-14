@@ -47,14 +47,26 @@ const TreeDetails: FC<Props> = ({ trees }) => {
         <>
           <div className="details-left">
             <div className="details-left__species">
-              <h1 className="details-left__species__common">{tree.speciesCommon}</h1>
-              <p className="details-left__species__sci">{tree.speciesSci}</p>
+              <h1 
+                className="details-left__species__common"
+                data-cy="details-common"
+              >{tree.speciesCommon}</h1>
+              <p 
+                className="details-left__species__sci"
+                data-cy="details-sci"
+              >{tree.speciesSci}</p>
             </div>
-            <div className="details-left__location">
+            <div 
+              className="details-left__location"
+              data-cy="details-location"
+            >
               <p>{tree.address}</p>
               <p className="details-left__location__neighborhood">{tree.neighborhood}</p>
             </div>
-            <table className="details-left__table">
+            <table 
+              className="details-left__table"
+              data-cy="details-table"
+            >
               <tbody>
                 <tr>
                   <td>approx. age:</td>
@@ -71,19 +83,21 @@ const TreeDetails: FC<Props> = ({ trees }) => {
               </tbody>
             </table>
             <br />
-            <p>posted by: {tree.author}</p>
+            <p data-cy="details-author">posted by: {tree.author}</p>
           </div>
           <div className="details-right">
             <div className="details-right__img-container">
               <img
                 className="details-right__img-container__img"
                 src={tree.img}
+                data-cy="details-image"
               />
             </div>
           </div>
           <button 
             className="modal-close" 
             onClick={closeModal}
+            data-cy="modal-close"
           >close</button>
         </>
       )}
