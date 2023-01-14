@@ -10,6 +10,7 @@ interface Props {
 interface formInputs {
   speciesCommon: string
   speciesSci: string
+  isNative: boolean
   address: string
   height: string
   circ: string
@@ -23,13 +24,14 @@ const NewTreeContainer: FC<Props> = ({ addTree }) => {
   // const [addressError, setAddressError] = useState<string | null>(null)
 
   const postTree = async (formInputs: formInputs) => {
-    const { speciesCommon, speciesSci, address, height, circ, age, author, imageURL } =
+    const { speciesCommon, speciesSci, isNative, address, height, circ, age, author, imageURL } =
       formInputs
     const [lat, long, district] = await getCoordinates(formInputs.address)
 
     const body = {
       speciesCommon,
       speciesSci,
+      isNative,
       height,
       circ,
       age,

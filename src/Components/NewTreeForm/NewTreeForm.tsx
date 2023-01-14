@@ -9,6 +9,7 @@ interface Props {
 const NewTreeForm: FC<Props> = ({ postTree }) => {
   const [speciesCommon, setSpeciesCommon] = useState("")
   const [speciesSci, setSpeciesSci] = useState("")
+  const [isNative, setIsNative] = useState(false)
   const [address, setAddress] = useState("")
   const [height, setHeight] = useState("")
   const [circ, setCirc] = useState("")
@@ -16,11 +17,13 @@ const NewTreeForm: FC<Props> = ({ postTree }) => {
   const [author, setAuthor] = useState("")
   const [imageURL, setImageURL] = useState("")
 
+
   const handleSubmit = (e: React.SyntheticEvent): void => {
     e.preventDefault()
     postTree({
       speciesCommon,
       speciesSci,
+      isNative,
       address,
       height,
       circ,
@@ -56,6 +59,15 @@ const NewTreeForm: FC<Props> = ({ postTree }) => {
                 onChange={e => setSpeciesSci(e.target.value)}
                 data-cy="form-sci"
               />
+            </label>
+            <label>
+              <input 
+                type="checkbox" 
+                checked={isNative}
+                onChange={() => setIsNative(!isNative)} 
+                data-cy="form-native" 
+              />
+              native species to Washington State?
             </label>
           </div>
           <div className="form__top__left__location">

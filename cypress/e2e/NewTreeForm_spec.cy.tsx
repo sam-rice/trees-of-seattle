@@ -27,9 +27,19 @@ describe("New Tree Form", () => {
       .should("have.value", "123 Greenlake Way")
     cy.get('[data-cy="form-author"]').type("Geddy Lee")
       .should("have.value", "Geddy Lee")
+    cy.get('[data-cy="form-image"]').type("URL here")
+      .should("have.value", "URL here")
   })
 
-  it("should have inputs for numerical data", () => {
+  it("should have a checkbox for indicating a native species", () => {
+    cy.get('[data-cy="form-native"]').should("not.be.checked")
+      .check()
+    cy.get('[data-cy="form-native"]').should("be.checked")
+      .uncheck()
+    cy.get('[data-cy="form-native"]').should("not.be.checked")
+  })
+
+  it("should have inputs for various numerical data", () => {
     cy.get('[data-cy="form-height"]').type("150xyz")
       .should("have.value", "150")
     cy.get('[data-cy="form-circ"]').type("45abc")
