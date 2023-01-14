@@ -67,7 +67,7 @@ const NewTreeForm: FC<Props> = ({ postTree }) => {
                 onChange={() => setIsNative(!isNative)} 
                 data-cy="form-native" 
               />
-              native species to Washington State?
+              native to Washington State?
             </label>
           </div>
           <div className="form__top__left__location">

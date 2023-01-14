@@ -55,6 +55,10 @@ const TreeDetails: FC<Props> = ({ trees }) => {
                 className="details-left__species__sci"
                 data-cy="details-sci"
               >{tree.speciesSci}</p>
+              {/* <p 
+                className="details-left__species__native" 
+                data-cy="details-native"
+              >is native? {tree.isNative ? "yes" : "no"}</p> */}
             </div>
             <div 
               className="details-left__location"
@@ -79,6 +83,10 @@ const TreeDetails: FC<Props> = ({ trees }) => {
                 <tr>
                   <td>base circumference:</td>
                   <td>{tree.circ} inches</td>
+                </tr>
+                <tr>
+                  <td>Washington native:</td>
+                  <td>{tree.isNative === "true" ? "yes" : "no"}</td>
                 </tr>
               </tbody>
             </table>
