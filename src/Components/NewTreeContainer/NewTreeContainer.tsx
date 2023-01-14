@@ -15,6 +15,7 @@ interface formInputs {
   circ: string
   age: string
   author: string
+  imageURL: string
 }
 
 const NewTreeContainer: FC<Props> = ({ addTree }) => {
@@ -22,7 +23,7 @@ const NewTreeContainer: FC<Props> = ({ addTree }) => {
   // const [addressError, setAddressError] = useState<string | null>(null)
 
   const postTree = async (formInputs: formInputs) => {
-    const { speciesCommon, speciesSci, address, height, circ, age, author } =
+    const { speciesCommon, speciesSci, address, height, circ, age, author, imageURL } =
       formInputs
     const [lat, long, district] = await getCoordinates(formInputs.address)
 
@@ -34,6 +35,7 @@ const NewTreeContainer: FC<Props> = ({ addTree }) => {
       age,
       author,
       address,
+      imageURL,
       neighborhood: district,
       lat: lat,
       long: long,

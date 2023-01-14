@@ -14,6 +14,7 @@ const NewTreeForm: FC<Props> = ({ postTree }) => {
   const [circ, setCirc] = useState("")
   const [age, setAge] = useState("")
   const [author, setAuthor] = useState("")
+  const [imageURL, setImageURL] = useState("")
 
   const handleSubmit = (e: React.SyntheticEvent): void => {
     e.preventDefault()
@@ -24,7 +25,8 @@ const NewTreeForm: FC<Props> = ({ postTree }) => {
       height,
       circ,
       age,
-      author
+      author,
+      imageURL
     })
   }
 
@@ -42,6 +44,7 @@ const NewTreeForm: FC<Props> = ({ postTree }) => {
                 placeholder="common name"
                 value={speciesCommon}
                 onChange={e => setSpeciesCommon(e.target.value)}
+                data-cy="form-common"
               />
             </label>
             <label>
@@ -51,6 +54,7 @@ const NewTreeForm: FC<Props> = ({ postTree }) => {
                 placeholder="scientific name"
                 value={speciesSci}
                 onChange={e => setSpeciesSci(e.target.value)}
+                data-cy="form-sci"
               />
             </label>
           </div>
@@ -63,6 +67,7 @@ const NewTreeForm: FC<Props> = ({ postTree }) => {
                 placeholder="address"
                 value={address}
                 onChange={e => setAddress(e.target.value)}
+                data-cy="form-address"
               />
               , Seattle, Washington
             </label>
@@ -75,6 +80,7 @@ const NewTreeForm: FC<Props> = ({ postTree }) => {
                 placeholder="approximate height"
                 value={height}
                 onChange={e => setHeight(e.target.value)}
+                data-cy="form-height"
               />
               approximate height in feet
             </label>
@@ -84,6 +90,7 @@ const NewTreeForm: FC<Props> = ({ postTree }) => {
                 placeholder="circumference"
                 value={circ}
                 onChange={e => setCirc(e.target.value)}
+                data-cy="form-circ"
               />
               {"approximate circumference at base of trunk (in.)"}
             </label>
@@ -93,6 +100,7 @@ const NewTreeForm: FC<Props> = ({ postTree }) => {
                 placeholder="approximate age"
                 value={age}
                 onChange={e => setAge(e.target.value)}
+                data-cy="form-age"
               />
               approximate age
             </label>
@@ -103,14 +111,22 @@ const NewTreeForm: FC<Props> = ({ postTree }) => {
                 placeholder="name"
                 value={author}
                 onChange={e => setAuthor(e.target.value)}
+                data-cy="form-author"
               />
             </label>
           </div>
         </div>
         <div className="form__top__right">
-          <div className="form__top__right__img-frame">
+          <input 
+            type="text" 
+            placeholder="image URL" 
+            value={imageURL} 
+            onChange={e => setImageURL(e.target.value)}
+            data-cy="form-image"
+          />
+          {/* <div className="form__top__right__img-frame">
             <input type="file" />
-          </div>
+          </div> */}
         </div>
       </div>
       <button className="form__submit" type="submit">
