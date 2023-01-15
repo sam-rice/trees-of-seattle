@@ -22,6 +22,7 @@ interface formInputs {
 
 const NewTreeContainer: FC<Props> = ({ addTree }) => {
   const [isLoading, setIsLoading] = useState(false)
+  const [addressError, setAddressError] = useState(false)
   // const [addressError, setAddressError] = useState<string | null>(null)
 
   const navigate = useNavigate()
@@ -29,19 +30,24 @@ const NewTreeContainer: FC<Props> = ({ addTree }) => {
   const postTree = async (formInputs: formInputs) => {
     const { speciesCommon, speciesSci, isNative, address, height, circ, age, author, imageURL } =
       formInputs
-    const [lat, long, district] = await getCoordinates(formInputs.address)
+    const [lat, long, district, street] = await getCoordinates(formInputs.address)
+
+    if (!street) {
+      setAddressError(true)
+      return
+    }
 
     const body = {
       speciesCommon,
       speciesSci,
       isNative,
+      address,
       height,
       circ,
       age,
       author,
-      address,
       imageURL,
-      neighborhood: district,
+      neighborhood: district ? district : null,
       lat: lat,
       long: long,
     }
@@ -63,13 +69,13 @@ const NewTreeContainer: FC<Props> = ({ addTree }) => {
       `https://api.geoapify.com/v1/geocode/search?text=${query}%20Seattle%20WA%20USA&apiKey=18e7ab79ca46494ab3da1a3f545a4cc2`
     )
     const data = await response.json()
-    const { lat, lon, district } = data.features[0].properties
-    return [lat, lon, district]
+    const { lat, lon, district, street } = data.features[0].properties
+    return [lat, lon, district, street]
   }
 
   return (
     <main className="form-main">
-      {!isLoading && <NewTreeForm postTree={postTree} />}
+      {!isLoading && <NewTreeForm postTree={postTree} addressError={addressError}/>}
       {/* {addressError && (
         <h2>
           Address could not be found. Please try reformatting the address.

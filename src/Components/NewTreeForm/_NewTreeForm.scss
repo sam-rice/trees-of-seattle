@@ -61,6 +61,16 @@ $form-margin: 45px;
   margin-left: 8px;
 }
 
+.address-error {
+  color: #900000;
+  margin: 0px;
+}
+
+.address-error-hidden {
+  visibility: hidden;
+  margin: 0px;
+}
+
 .form__top__right {
   display: flex;
   align-items: center;

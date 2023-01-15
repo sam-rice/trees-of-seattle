@@ -48,10 +48,12 @@ describe("New Tree Form", () => {
       .should("have.value", "110")
   })
 
-  it("should require certain data", () => {
+  it("should only navigate to the map view if the submission is valid", () => {
     cy.get('[data-cy="form-submit"]').click()
     cy.url().should("eq", "http://localhost:3000/new-tree")
+  })
 
+  it("should require certain data", () => {
     cy.get('[data-cy="form-common"]').invoke("attr", "required").should("exist")
     cy.get('[data-cy="form-sci"]').invoke("attr", "required").should("exist")
     cy.get('[data-cy="form-address"]').invoke("attr", "required").should("exist")
@@ -81,6 +83,15 @@ describe("New Tree Form - Successful POST", () => {
       },
       {
         fixture: "newTree.json",
+      }
+    )
+    cy.intercept(
+      {
+        method: "GET",
+        url: "https://api.geoapify.com/v1/geocode/search?text=3029%20NW%2068th%20St%20Seattle%20WA%20USA&apiKey=18e7ab79ca46494ab3da1a3f545a4cc2",
+      },
+      {
+        fixture: "geoapifyResponse.json",
       }
     )
     cy.visit("http://localhost:3000/new-tree")

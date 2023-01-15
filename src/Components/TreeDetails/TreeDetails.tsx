@@ -93,7 +93,7 @@ const TreeDetails: FC<Props> = ({ trees }) => {
             <div className="details-right__img-container">
               <img
                 className="details-right__img-container__img"
-                src={tree.img}
+                src={tree.imageURL}
                 data-cy="details-image"
               />
             </div>
