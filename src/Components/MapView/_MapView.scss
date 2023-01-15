@@ -3,10 +3,9 @@
 
 .map-main {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
+  height: 84vh;
   width: 100vw;
 }
 
@@ -28,7 +27,7 @@
 }
 
 #map {
-  height: 80%;
+  height: 94%;
   width: 97vw;
   margin-bottom: 1vw;
   z-index: 1;
@@ -41,6 +40,10 @@
 
 @media (max-width: 530px) {
   #map {
-    height: 78%;
+    height: 84%;
+  }
+
+  .map-filter {
+    height: 7%;
   }
 }

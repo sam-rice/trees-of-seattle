@@ -77,7 +77,7 @@ const NewTreeForm: FC<Props> = ({ postTree }) => {
               native to Washington State?
             </label>
           </div>
-          <div className="form__top__left__location">
+          <div>
             <h2 className="form-header">Location:</h2>
             <label>
               <span className="label-hidden">address:</span>
@@ -149,7 +149,7 @@ const NewTreeForm: FC<Props> = ({ postTree }) => {
           </label>
         </div>
         <div className="form__top__right">
-          {/* <label>
+          <label>
             <span className="label-hidden">image URL:</span>
             <input
               className="form-input"
@@ -161,10 +161,10 @@ const NewTreeForm: FC<Props> = ({ postTree }) => {
               data-cy="form-image"
             />
             <span className="optional-field">{"(opt.)"}</span>
-          </label> */}
-          <div className="form__top__right__img-frame">
+          </label>
+          {/* <div className="form__top__right__img-frame">
             <input type="file" />
-          </div>
+          </div> */}
         </div>
       </div>
       <button
