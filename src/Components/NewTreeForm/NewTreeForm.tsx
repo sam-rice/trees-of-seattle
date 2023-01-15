@@ -33,15 +33,19 @@ const NewTreeForm: FC<Props> = ({ postTree }) => {
   }
 
   return (
-    <form className="form" onSubmit={e => handleSubmit(e)}>
+    <form
+      className="form"
+      onSubmit={e => handleSubmit(e)}
+    >
       <div className="form__top">
         <div className="form__top__left">
           <h1>add a tree:</h1>
           <div className="form__top__left__species-name">
-            <h2>Species:</h2>
+            <h2 className="form-header">Species:</h2>
             <label>
               <span className="label-hidden">common name:</span>
               <input
+                className="form-input"
                 type="text"
                 placeholder="common name"
                 required={true}
@@ -53,6 +57,7 @@ const NewTreeForm: FC<Props> = ({ postTree }) => {
             <label>
               <span className="label-hidden">scientific name:</span>
               <input
+                className="form-input"
                 type="text"
                 placeholder="scientific name"
                 required={true}
@@ -72,11 +77,12 @@ const NewTreeForm: FC<Props> = ({ postTree }) => {
               native to Washington State?
             </label>
           </div>
-          <div className="form__top__left__location">
-            <h2>Location:</h2>
+          <div>
+            <h2 className="form-header">Location:</h2>
             <label>
               <span className="label-hidden">address:</span>
               <input
+                className="form-input"
                 type="text"
                 placeholder="address"
                 required={true}
@@ -88,9 +94,10 @@ const NewTreeForm: FC<Props> = ({ postTree }) => {
             </label>
           </div>
           <div className="form__top__left__stats">
-            <h2>Size Data:</h2>
+            <h2 className="form-header">Size Data:</h2>
             <label>
               <input
+                className="form-input"
                 type="number"
                 placeholder="approximate height"
                 required={false}
@@ -98,11 +105,12 @@ const NewTreeForm: FC<Props> = ({ postTree }) => {
                 onChange={e => setHeight(e.target.value)}
                 data-cy="form-height"
               />
-              approximate height in feet
+              approx. height in feet
               <span className="optional-field">{"(opt.)"}</span>
             </label>
             <label>
               <input
+                className="form-input"
                 type="number"
                 placeholder="circumference"
                 required={false}
@@ -110,11 +118,12 @@ const NewTreeForm: FC<Props> = ({ postTree }) => {
                 onChange={e => setCirc(e.target.value)}
                 data-cy="form-circ"
               />
-              {"approximate circumference at base of trunk (in.)"}
+              {"approx. circumference at base of trunk (in.)"}
               <span className="optional-field">{"(opt.)"}</span>
             </label>
             <label>
               <input
+                className="form-input"
                 type="number"
                 placeholder="approximate age"
                 required={true}
@@ -122,25 +131,28 @@ const NewTreeForm: FC<Props> = ({ postTree }) => {
                 onChange={e => setAge(e.target.value)}
                 data-cy="form-age"
               />
-              approximate age
-            </label>
-            <label>
-              posted by:
-              <input
-                type="text"
-                placeholder="name"
-                required={true}
-                value={author}
-                onChange={e => setAuthor(e.target.value)}
-                data-cy="form-author"
-              />
+              approx. age
             </label>
           </div>
+          <br />
+          <label>
+            posted by:
+            <input
+              className={"form-input author--input"}
+              type="text"
+              placeholder="name"
+              required={true}
+              value={author}
+              onChange={e => setAuthor(e.target.value)}
+              data-cy="form-author"
+            />
+          </label>
         </div>
         <div className="form__top__right">
           <label>
             <span className="label-hidden">image URL:</span>
             <input
+              className="form-input"
               type="text"
               placeholder="image URL"
               required={false}

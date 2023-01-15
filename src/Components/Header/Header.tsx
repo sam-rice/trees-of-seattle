@@ -9,20 +9,24 @@ const Header: FC = () => {
   return (
     <header className="header">
       <nav className="nav">
-        <Link to="/">
-          <h1 
-            className="site-title" 
-            data-cy="site-title">
+        <Link
+          className="nav__title-wrapper"
+          to="/"
+        >
+          <h1
+            className="site-title"
+            data-cy="site-title"
+          >
             TREES
             <span className="site-title__inner">OF</span>
             SEATTLE
           </h1>
         </Link>
-        <div className="header__right">
+        <div className="nav__button-container">
           <Link to="/new-tree">
             {!location.pathname.includes("/new-tree") && (
-              <button 
-                className="header-button" 
+              <button
+                className="header-button"
                 data-cy="new-tree-button"
               >
                 new tree

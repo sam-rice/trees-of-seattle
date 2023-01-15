@@ -1,46 +1,72 @@
 @use "src/StyleUtilities/variables";
 @use "src/StyleUtilities/mixins";
 
+$form-margin: 45px;
 
 .form {
   @include mixins.floatingContainer();
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #d9d9d99a;
-  margin-bottom: 3vh;
+  background-color: #d9d9d9c6;
 }
 
 .form__top {
   display: flex;
-  justify-content: center;
-  height: 100%;
-  width: 100%
+  justify-content: space-between;
+  width: 100%;
+  height: 91%;
 }
 
 .form__top__left {
-  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: $form-margin;
+
+  & h1 {
+    font-size: 1.5rem;
+    margin: 0px;
+  }
+
+  & label {
+    font-size: .8rem;
+    margin: 5px 0px;
+  }
 }
 
 .form__top__left__species-name {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
-.form__top__left__location {
-  
+.form-header {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.form-input {
+  @include mixins.themeInput();
+  margin-right: 8px;
 }
 
 .form__top__left__stats {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+}
+
+.author--input {
+  margin-left: 8px;
 }
 
 .form__top__right {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50%;
+  width: 44%;
+  margin: $form-margin;
 }
 
 .form__top__right__img-frame {
@@ -50,7 +76,10 @@
 }
 
 .form__submit {
+  @include mixins.themeButton();
   width: 100px;
+  color: black;
+  border: 2px solid black;
 }
 
 .optional-field {
@@ -58,4 +87,35 @@
   color: variables.$text-gray;
   font-style: italic;
   margin-left: 5px;
+}
+
+@media (max-width: 830px) {
+
+  .form {
+    justify-content: space-evenly;
+  }
+
+  .form__top {
+    flex-direction: column;
+    align-items: center;
+    height: 94%;
+
+    & label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .form__top__left {
+    align-items: center;
+
+    & h1 {
+      margin-bottom: 25px;
+    }
+  }
+
+  .form__top__left__stats {
+    align-items: center;
+  }
 }

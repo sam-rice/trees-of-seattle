@@ -1,6 +1,10 @@
 @use "./variables";
 
 @mixin themeButton() {
+  font-weight: 800;
+  border: 2px solid variables.$dark-green;
+  color: variables.$dark-green;
+  height: 35px;
   border-radius: 25px;
   background-color: #00000000;
 
@@ -10,7 +14,12 @@
 }
 
 @mixin floatingContainer() {
-  width: min(89vw, 1300px);
-  height: 70%;
-  padding: 60px;
+  width: min(90vw, 1400px);
+}
+
+@mixin themeInput() {
+  width: 200px;
+  height: 26px;
+  text-indent: 8px;
+  border: 2px solid variables.$light-green;
 }
