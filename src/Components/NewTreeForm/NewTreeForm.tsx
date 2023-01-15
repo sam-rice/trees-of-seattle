@@ -17,7 +17,6 @@ const NewTreeForm: FC<Props> = ({ postTree }) => {
   const [author, setAuthor] = useState("")
   const [imageURL, setImageURL] = useState("")
 
-
   const handleSubmit = (e: React.SyntheticEvent): void => {
     e.preventDefault()
     postTree({
@@ -29,7 +28,7 @@ const NewTreeForm: FC<Props> = ({ postTree }) => {
       circ,
       age,
       author,
-      imageURL
+      imageURL,
     })
   }
 
@@ -45,6 +44,7 @@ const NewTreeForm: FC<Props> = ({ postTree }) => {
               <input
                 type="text"
                 placeholder="common name"
+                required={true}
                 value={speciesCommon}
                 onChange={e => setSpeciesCommon(e.target.value)}
                 data-cy="form-common"
@@ -55,17 +55,19 @@ const NewTreeForm: FC<Props> = ({ postTree }) => {
               <input
                 type="text"
                 placeholder="scientific name"
+                required={true}
                 value={speciesSci}
                 onChange={e => setSpeciesSci(e.target.value)}
                 data-cy="form-sci"
               />
             </label>
             <label>
-              <input 
-                type="checkbox" 
+              <input
+                type="checkbox"
                 checked={isNative}
-                onChange={() => setIsNative(!isNative)} 
-                data-cy="form-native" 
+                required={false}
+                onChange={() => setIsNative(!isNative)}
+                data-cy="form-native"
               />
               native to Washington State?
             </label>
@@ -77,6 +79,7 @@ const NewTreeForm: FC<Props> = ({ postTree }) => {
               <input
                 type="text"
                 placeholder="address"
+                required={true}
                 value={address}
                 onChange={e => setAddress(e.target.value)}
                 data-cy="form-address"
@@ -90,26 +93,31 @@ const NewTreeForm: FC<Props> = ({ postTree }) => {
               <input
                 type="number"
                 placeholder="approximate height"
+                required={false}
                 value={height}
                 onChange={e => setHeight(e.target.value)}
                 data-cy="form-height"
               />
               approximate height in feet
+              <span className="optional-field">{"(opt.)"}</span>
             </label>
             <label>
               <input
                 type="number"
                 placeholder="circumference"
+                required={false}
                 value={circ}
                 onChange={e => setCirc(e.target.value)}
                 data-cy="form-circ"
               />
               {"approximate circumference at base of trunk (in.)"}
+              <span className="optional-field">{"(opt.)"}</span>
             </label>
             <label>
               <input
                 type="number"
                 placeholder="approximate age"
+                required={true}
                 value={age}
                 onChange={e => setAge(e.target.value)}
                 data-cy="form-age"
@@ -121,6 +129,7 @@ const NewTreeForm: FC<Props> = ({ postTree }) => {
               <input
                 type="text"
                 placeholder="name"
+                required={true}
                 value={author}
                 onChange={e => setAuthor(e.target.value)}
                 data-cy="form-author"
@@ -129,19 +138,28 @@ const NewTreeForm: FC<Props> = ({ postTree }) => {
           </div>
         </div>
         <div className="form__top__right">
-          <input 
-            type="text" 
-            placeholder="image URL" 
-            value={imageURL} 
-            onChange={e => setImageURL(e.target.value)}
-            data-cy="form-image"
-          />
+          <label>
+            <span className="label-hidden">image URL:</span>
+            <input
+              type="text"
+              placeholder="image URL"
+              required={false}
+              value={imageURL}
+              onChange={e => setImageURL(e.target.value)}
+              data-cy="form-image"
+            />
+            <span className="optional-field">{"(opt.)"}</span>
+          </label>
           {/* <div className="form__top__right__img-frame">
             <input type="file" />
           </div> */}
         </div>
       </div>
-      <button className="form__submit" type="submit">
+      <button
+        className="form__submit"
+        type="submit"
+        data-cy="form-submit"
+      >
         SUBMIT
       </button>
     </form>

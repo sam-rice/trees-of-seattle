@@ -35,6 +35,8 @@ describe("Tree Details View", () => {
       .should("have.text", "approx. height:120 feet")
       .next()
       .should("have.text", "base circumference:150 inches")
+      .next()
+      .should("have.text", "Washington native:yes")
   })
 
   it("should display the tree's poster's name", () => {

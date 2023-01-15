@@ -1,4 +1,5 @@
 import { ReactElement, useState, FC } from "react"
+import { useNavigate } from "react-router-dom"
 
 import "./_NewTreeContainer.scss"
 import NewTreeForm from "../NewTreeForm/NewTreeForm"
@@ -22,6 +23,8 @@ interface formInputs {
 const NewTreeContainer: FC<Props> = ({ addTree }) => {
   const [isLoading, setIsLoading] = useState(false)
   // const [addressError, setAddressError] = useState<string | null>(null)
+
+  const navigate = useNavigate()
 
   const postTree = async (formInputs: formInputs) => {
     const { speciesCommon, speciesSci, isNative, address, height, circ, age, author, imageURL } =
@@ -52,6 +55,7 @@ const NewTreeContainer: FC<Props> = ({ addTree }) => {
     const response = await fetch("http://localhost:3001/v1/trees", settings)
     const newTree = await response.json()
     addTree(newTree)
+    navigate("/")
   }
 
   const getCoordinates = async (query: string) => {
