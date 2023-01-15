@@ -33,7 +33,10 @@ const NewTreeForm: FC<Props> = ({ postTree }) => {
   }
 
   return (
-    <form className="form" onSubmit={e => handleSubmit(e)}>
+    <form
+      className="form"
+      onSubmit={e => handleSubmit(e)}
+    >
       <div className="form__top">
         <div className="form__top__left">
           <h1>add a tree:</h1>

@@ -1,6 +1,8 @@
 @use "src/StyleUtilities/variables";
 @use "src/StyleUtilities/mixins";
 
+$margin-x: 50px;
+
 .header {
   position: absolute;
   height: 120px;
@@ -14,13 +16,31 @@
   height: 100%;
 }
 
+.nav__title-wrapper {
+  margin-left: $margin-x;
+}
+
 .site-title {
   font-size: 2rem;
   font-weight: 400;
   letter-spacing: 5px;
-  
+  margin: 0px;
+
   &__inner {
     font-size: 1rem;
     margin: 0px 10px;
   }
+}
+
+.nav__button-wrapper {
+  margin-right: $margin-x;
+}
+
+.header-button {
+  @include mixins.themeButton();
+  color: variables.$dark-green;
+  font-weight: 800;
+  height: 35px;
+  width: 90px;
+  border: 2px solid variables.$dark-green;
 }
