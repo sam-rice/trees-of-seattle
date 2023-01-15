@@ -12,28 +12,38 @@
 
 .map-filter {
   z-index: 10;
+  height: 5%;
 
   &__input {
-    margin-bottom: 10px;
     width: 200px;
-    height: 25px;
+    height: 26px;
     text-indent: 8px;
+    margin-right: 10px;
+    border: 2px solid variables.$light-green;
   }
 
   &__button {
-    
+    @include mixins.themeButton();
+    font-weight: 400;
+    width: 60px;
+    height: 30px;
   }
 }
-
 
 #map {
   height: 80%;
   width: 97vw;
-  margin-bottom: 3vh;
+  margin-bottom: 1vw;
   z-index: 1;
 }
 
 .leaflet-container {
   width: 100%;
   height: 100%;
+}
+
+@media (max-width: 530px) {
+  #map {
+    height: 78%;
+  }
 }

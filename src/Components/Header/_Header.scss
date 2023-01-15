@@ -5,7 +5,7 @@ $margin-x: 50px;
 
 .header {
   position: absolute;
-  height: 120px;
+  height: 15%;
   width: 100%;
 }
 
@@ -34,7 +34,6 @@ $margin-x: 50px;
 
 .header-button {
   @include mixins.themeButton();
-  color: variables.$dark-green;
   width: 90px;
   margin-right: $margin-x;
 }
@@ -47,7 +46,15 @@ $margin-x: 50px;
   }
 
   .nav__title-wrapper {
-    margin: 0px;
+    margin: 10px 0px 0px 0px;
+  }
+
+  .site-title {
+    font-size: 1.6rem;
+
+    &__inner {
+      font-size: .8rem;
+    }
   }
 
   .nav__button-container {
