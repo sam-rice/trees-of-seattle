@@ -17,6 +17,7 @@
 
 .modal {
   @include mixins.floatingContainer();
+  height: 73%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -31,9 +32,10 @@
 .details-left {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   width: 50%;
   height: min(100%, 550px);
+  margin: 2vw 0vw 0vw 4vw;
 }
 
 .details-left__species {
@@ -76,7 +78,7 @@
 
 .details-right__img-container {
   position: relative;
-  height: 90%;
+  height: 85%;
   width: 90%;
 
   &__img {
@@ -100,5 +102,37 @@
 
   &:hover {
     color: variables.$text-gray;
+  }
+}
+
+@media (max-width: 640px) {
+
+  .modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 79%;
+  }
+
+  .details-left {
+    margin: 10px 0px;
+    width: 80%;
+  }
+
+  .details-left__species__sci {
+    margin-bottom: 20px;
+  }
+
+  .details-left__location {
+    margin-bottom: 20px;
+  }
+
+  .details-right {
+    width: 100%;
+    margin-bottom: 17px;
+  }
+
+  .details-right__img-container {
+    height: 100%;
   }
 }
