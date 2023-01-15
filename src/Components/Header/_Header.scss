@@ -32,15 +32,30 @@ $margin-x: 50px;
   }
 }
 
-.nav__button-wrapper {
-  margin-right: $margin-x;
-}
-
 .header-button {
   @include mixins.themeButton();
   color: variables.$dark-green;
-  font-weight: 800;
-  height: 35px;
   width: 90px;
-  border: 2px solid variables.$dark-green;
+  margin-right: $margin-x;
+}
+
+@media (max-width: 530px) {
+
+  .nav {
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .nav__title-wrapper {
+    margin: 0px;
+  }
+
+  .nav__button-container {
+    width: 100%;
+    text-align: right;
+  }
+
+  .header-button {
+    margin-right: 15px;
+  }
 }

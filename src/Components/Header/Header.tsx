@@ -22,19 +22,18 @@ const Header: FC = () => {
             SEATTLE
           </h1>
         </Link>
-        <Link
-          className="nav__button-wrapper"
-          to="/new-tree"
-        >
-          {!location.pathname.includes("/new-tree") && (
-            <button
-              className="header-button"
-              data-cy="new-tree-button"
-            >
-              new tree
-            </button>
-          )}
-        </Link>
+        <div className="nav__button-container">
+          <Link to="/new-tree">
+            {!location.pathname.includes("/new-tree") && (
+              <button
+                className="header-button"
+                data-cy="new-tree-button"
+              >
+                new tree
+              </button>
+            )}
+          </Link>
+        </div>
       </nav>
     </header>
   )

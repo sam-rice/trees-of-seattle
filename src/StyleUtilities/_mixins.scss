@@ -1,6 +1,9 @@
 @use "./variables";
 
 @mixin themeButton() {
+  font-weight: 800;
+  border: 2px solid variables.$dark-green;
+  height: 35px;
   border-radius: 25px;
   background-color: #00000000;
 
