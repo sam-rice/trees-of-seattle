@@ -15,11 +15,8 @@
   height: 5%;
 
   &__input {
-    width: 200px;
-    height: 26px;
-    text-indent: 8px;
+    @include mixins.themeInput();
     margin-right: 10px;
-    border: 2px solid variables.$light-green;
   }
 
   &__button {

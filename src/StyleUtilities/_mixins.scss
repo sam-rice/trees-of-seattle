@@ -15,6 +15,12 @@
 
 @mixin floatingContainer() {
   width: min(89vw, 1300px);
-  height: 70%;
   padding: 60px;
+}
+
+@mixin themeInput() {
+  width: 200px;
+  height: 26px;
+  text-indent: 8px;
+  border: 2px solid variables.$light-green;
 }

@@ -1,30 +1,55 @@
 @use "src/StyleUtilities/variables";
 @use "src/StyleUtilities/mixins";
 
-
 .form {
   @include mixins.floatingContainer();
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #d9d9d99a;
+  background-color: #d9d9d9c6;
   margin-bottom: 3vh;
+  margin-top: 140px;
+  min-height: 85%;
 }
 
 .form__top {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   height: 100%;
   width: 100%
 }
 
 .form__top__left {
-  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 93%;
+
+  & h1 {
+    font-size: 1.5rem;
+    margin: 0px;
+  }
+
+  & label {
+    font-size: .8rem;
+  }
 }
 
 .form__top__left__species-name {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 28%;
+}
+
+.form-header {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.form-input {
+  @include mixins.themeInput();
+  margin-right: 8px;
 }
 
 .form__top__left__location {
@@ -34,6 +59,12 @@
 .form__top__left__stats {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 30%;
+}
+
+.author--input {
+  margin-left: 8px;
 }
 
 .form__top__right {
@@ -50,7 +81,10 @@
 }
 
 .form__submit {
+  @include mixins.themeButton();
   width: 100px;
+  color: black;
+  border: 2px solid black;
 }
 
 .optional-field {
@@ -58,4 +92,33 @@
   color: variables.$text-gray;
   font-style: italic;
   margin-left: 5px;
+}
+
+@media (max-width: 830px) {
+
+  .form__top {
+    flex-direction: column;
+    align-items: center;
+    height: 120vh;
+
+    & label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .form__top__left {
+    align-items: center;
+    // height: 60%;
+  }
+
+  .form__top__left__stats {
+    align-items: center;
+  }
+
+  .form__top__right {
+    width: 72%;
+    margin: 29px 0px;
+  }
 }
