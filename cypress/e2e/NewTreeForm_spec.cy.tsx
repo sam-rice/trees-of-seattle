@@ -48,10 +48,12 @@ describe("New Tree Form", () => {
       .should("have.value", "110")
   })
 
-  it("should require certain data", () => {
+  it("should only navigate to the map view if the submission is valid", () => {
     cy.get('[data-cy="form-submit"]').click()
     cy.url().should("eq", "http://localhost:3000/new-tree")
+  })
 
+  it("should require certain data", () => {
     cy.get('[data-cy="form-common"]').invoke("attr", "required").should("exist")
     cy.get('[data-cy="form-sci"]').invoke("attr", "required").should("exist")
     cy.get('[data-cy="form-address"]').invoke("attr", "required").should("exist")
@@ -83,6 +85,15 @@ describe("New Tree Form - Successful POST", () => {
         fixture: "newTree.json",
       }
     )
+    cy.intercept(
+      {
+        method: "GET",
+        url: "https://api.geoapify.com/v1/geocode/search?text=3029%20NW%2068th%20St%20Seattle%20WA%20USA&apiKey=18e7ab79ca46494ab3da1a3f545a4cc2",
+      },
+      {
+        fixture: "geoapifyResponse.json",
+      }
+    )
     cy.visit("http://localhost:3000/new-tree")
     cy.get('[data-cy="form-common"]').type("Bigleaf Maple")
     cy.get('[data-cy="form-sci"]').type("Acer macrophyllum")
@@ -92,14 +103,23 @@ describe("New Tree Form - Successful POST", () => {
     cy.get('[data-cy="form-height"]').type("100")
     cy.get('[data-cy="form-circ"]').type("80")
     cy.get('[data-cy="form-age"]').type("75")
-    cy.get('[data-cy="form-submit"]').click()
   })
 
   it("should navigate to the map view after a new tree is successfully submitted", () => {
+    cy.get('[data-cy="form-submit"]').click()
     cy.url().should("eq", "http://localhost:3000/")
+  })
+
+  it("should handle an invalid address error", () => {
+    cy.get('[data-cy="form-address"]').clear()
+      .type("foobar")
+    cy.get('[data-cy="form-submit"]').click()
+    cy.url().should("eq", "http://localhost:3000/new-tree")
+    cy.get('[data-cy="address-error"]').should("be.visible")
   })
   
   it("should show a map marker and popup for the newly-created tree", () => {
+    cy.get('[data-cy="form-submit"]').click()
     cy.get('.leaflet-container').click(285, 30)
     cy.get('[data-cy="popup-common"]').should("have.text", "Bigleaf Maple")
     cy.get('[data-cy="popup-sci"]').should("have.text", "Acer macrophyllum")
@@ -113,12 +133,14 @@ describe("New Tree Form - Successful POST", () => {
   })
   
   it("should navigate to the newly-created tree's detail view", () => {
+    cy.get('[data-cy="form-submit"]').click()
     cy.get('.leaflet-container').click(285, 30)
     cy.get('[data-cy="popup-button"]').click()
     cy.url().should("eq", "http://localhost:3000/4")
   })
 
   it("should display the correct data in the newly-created tree's detail view", () => {
+    cy.get('[data-cy="form-submit"]').click()
     cy.get('.leaflet-container').click(285, 30)
     cy.get('[data-cy="popup-button"]').click()
 

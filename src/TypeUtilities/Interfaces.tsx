@@ -7,7 +7,7 @@ export interface TreeObject {
   circ: string
   age: string
   author: string
-  img: string
+  imageURL: string
   address: string
   neighborhood: string
   lat: string

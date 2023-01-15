@@ -16,7 +16,7 @@ const PopupContent: FC<Props> = ({ data, goToDetails }) => {
     height,
     age,
     author,
-    img,
+    imageURL,
     address,
   } = data
 
@@ -59,7 +59,7 @@ const PopupContent: FC<Props> = ({ data, goToDetails }) => {
         <div className="popup-img-container">
           <img 
             className="popup-img-container__img" 
-            src={img}
+            src={imageURL}
             data-cy="popup-thumbnail"
           />
         </div>
