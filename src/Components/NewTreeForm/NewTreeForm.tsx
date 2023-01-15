@@ -92,7 +92,11 @@ const NewTreeForm: FC<Props> = ({ postTree, addressError }) => {
                 data-cy="form-address"
               />
               , Seattle, Washington
-              <p className={addressError ? "address-error" : "address-error-hidden"}>* invalid address</p>
+              <p 
+                className={addressError ? "address-error" : "address-error-hidden"} 
+                data-cy="address-error"
+              >* invalid address
+              </p>
             </label>
           </div>
           <div className="form__top__left__stats">
