@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 
 import "./_NewTreeContainer.scss"
 import NewTreeForm from "../NewTreeForm/NewTreeForm"
+import { cleanTreeObject } from "../../CleanerUtilities/cleanTreesData"
 
 interface Props {
   addTree: Function
@@ -58,7 +59,7 @@ const NewTreeContainer: FC<Props> = ({ addTree }) => {
     }
     const response = await fetch("http://localhost:3001/v1/trees", settings)
     const newTree = await response.json()
-    addTree(newTree)
+    addTree(cleanTreeObject(newTree))
     navigate("/")
   }
 

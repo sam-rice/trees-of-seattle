@@ -8,7 +8,7 @@ import TreeDetails from "../TreeDetails/TreeDetails"
 import NewTreeContainer from "../NewTreeContainer/NewTreeContainer"
 
 import { TreeObject, DBTreeObject } from "../../TypeUtilities/Interfaces"
-import cleanTreeData from "../../CleanerUtilities/cleanTreeData"
+import { cleanTreesData } from "../../CleanerUtilities/cleanTreesData"
 
 const App: FC = () => {
   const [trees, setTrees] = useState<TreeObject[]>([])
@@ -20,7 +20,7 @@ const App: FC = () => {
   const getAllTrees = async () => {
     const response = await fetch("http://localhost:3001/v1/trees")
     const data: DBTreeObject[] = await response.json()
-    setTrees(cleanTreeData(data))
+    setTrees(cleanTreesData(data))
   }
 
   const addTree = (tree: TreeObject): void => {

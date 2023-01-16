@@ -1,7 +1,11 @@
 import { TreeObject, DBTreeObject } from "../TypeUtilities/Interfaces"
 
-const cleanTreeData = (data: DBTreeObject[]): TreeObject[] => {
-  return data.map(tree => ({
+export const cleanTreesData = (trees: DBTreeObject[]): TreeObject[] => {
+  return trees.map(tree => cleanTreeObject(tree))
+}
+
+export const cleanTreeObject = (tree: DBTreeObject): TreeObject => {
+  return {
     id: tree.id,
     speciesCommon: tree.species_common,
     speciesSci: tree.species_sci,
@@ -15,7 +19,6 @@ const cleanTreeData = (data: DBTreeObject[]): TreeObject[] => {
     neighborhood: tree.neighborhood,
     lat: tree.lat,
     long: tree.long,
-  }))
+  }
 }
 
-export default cleanTreeData
