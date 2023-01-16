@@ -78,14 +78,18 @@ const TreeDetails: FC<Props> = ({ trees }) => {
                   <td>approx. age:</td>
                   <td>{tree.age} years</td>
                 </tr>
-                <tr>
-                  <td>approx. height:</td>
-                  <td>{tree.height} feet</td>
-                </tr>
-                <tr>
-                  <td>base circumference:</td>
-                  <td>{tree.circ} inches</td>
-                </tr>
+                {tree.height && (
+                  <tr>
+                    <td>approx. height:</td>
+                    <td>{tree.height} feet</td>
+                  </tr>
+                )}
+                {tree.circ && (
+                  <tr>
+                    <td>base circumference:</td>
+                    <td>{tree.circ} inches</td>
+                  </tr>
+                )}
                 <tr>
                   <td>Washington native:</td>
                   <td>{tree.isNative ? "yes" : "no"}</td>
@@ -96,13 +100,16 @@ const TreeDetails: FC<Props> = ({ trees }) => {
             <p data-cy="details-author">posted by: {tree.author}</p>
           </div>
           <div className="details-right">
-            <div className="details-right__img-container">
-              <img
-                className="details-right__img-container__img"
-                src={tree.imageURL}
-                data-cy="details-image"
-              />
-            </div>
+            {tree.imageURL && (
+              <div className="details-right__img-container">
+                <img
+                  className="details-right__img-container__img"
+                  src={tree.imageURL}
+                  alt={`user-submitted photo of ${tree.speciesCommon}`}
+                  data-cy="details-image"
+                />
+              </div>
+            )}
           </div>
           <button
             className="modal-close"

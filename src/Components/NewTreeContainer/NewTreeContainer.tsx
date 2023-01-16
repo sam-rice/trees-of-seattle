@@ -8,7 +8,7 @@ interface Props {
   addTree: Function
 }
 
-interface formInputs {
+interface FormInputs {
   speciesCommon: string
   speciesSci: string
   isNative: boolean
@@ -25,7 +25,7 @@ const NewTreeContainer: FC<Props> = ({ addTree }) => {
 
   const navigate = useNavigate()
 
-  const postTree = async (formInputs: formInputs) => {
+  const postTree = async (formInputs: FormInputs) => {
     const { speciesCommon, speciesSci, isNative, address, height, circ, age, author, imageURL } =
       formInputs
     const [lat, long, district, street] = await getCoordinates(formInputs.address)
@@ -40,11 +40,11 @@ const NewTreeContainer: FC<Props> = ({ addTree }) => {
       speciesSci,
       isNative,
       address,
-      height,
-      circ,
+      height: height ? height : null,
+      circ: circ ? circ : null,
       age,
       author,
-      imageURL,
+      imageURL: imageURL ? imageURL : null,
       neighborhood: district ? district : null,
       lat: lat,
       long: long,

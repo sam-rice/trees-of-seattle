@@ -60,6 +60,7 @@ const PopupContent: FC<Props> = ({ data, goToDetails }) => {
           <img 
             className="popup-img-container__img" 
             src={imageURL}
+            alt={`user-submitted photo of ${speciesCommon}`}
             data-cy="popup-thumbnail"
           />
         </div>
