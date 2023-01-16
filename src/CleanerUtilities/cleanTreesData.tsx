@@ -21,4 +21,3 @@ export const cleanTreeObject = (tree: DBTreeObject): TreeObject => {
     long: tree.long,
   }
 }
-
