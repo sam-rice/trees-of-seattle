@@ -7,7 +7,8 @@ import MapView from "../MapView/MapView"
 import TreeDetails from "../TreeDetails/TreeDetails"
 import NewTreeContainer from "../NewTreeContainer/NewTreeContainer"
 
-import { TreeObject } from "../../TypeUtilities/Interfaces"
+import { TreeObject, DBTreeObject } from "../../TypeUtilities/Interfaces"
+import cleanTreeData from "../../CleanerUtilities/cleanTreeData"
 
 const App: FC = () => {
   const [trees, setTrees] = useState<TreeObject[]>([])
@@ -18,8 +19,8 @@ const App: FC = () => {
 
   const getAllTrees = async () => {
     const response = await fetch("http://localhost:3001/v1/trees")
-    const data = await response.json()
-    setTrees(data)
+    const data: DBTreeObject[] = await response.json()
+    setTrees(cleanTreeData(data))
   }
 
   const addTree = (tree: TreeObject): void => {
@@ -30,10 +31,19 @@ const App: FC = () => {
     <>
       <Header />
       <Routes>
-        <Route path="/" element={<MapView trees={trees}/>}>
-          <Route path=":id" element={<TreeDetails trees={trees} />} />
+        <Route
+          path="/"
+          element={<MapView trees={trees} />}
+        >
+          <Route
+            path=":id"
+            element={<TreeDetails trees={trees} />}
+          />
         </Route>
-        <Route path="/new-tree" element={<NewTreeContainer addTree={addTree} />} />
+        <Route
+          path="/new-tree"
+          element={<NewTreeContainer addTree={addTree} />}
+        />
       </Routes>
     </>
   )

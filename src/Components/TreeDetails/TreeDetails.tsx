@@ -14,7 +14,7 @@ interface Props {
 const TreeDetails: FC<Props> = ({ trees }) => {
   const { id } = useParams()
   const [isOpen, setIsOpen] = useState(true)
-  const [tree, setTree] = useState<TreeObject | null >(null)
+  const [tree, setTree] = useState<TreeObject | null>(null)
 
   const navigate = useNavigate()
   ReactModal.setAppElement("#root")
@@ -24,7 +24,7 @@ const TreeDetails: FC<Props> = ({ trees }) => {
   }, [trees])
 
   const findTree = (): void => {
-    setTree(trees.find(tree => tree.id === id) || null)
+    setTree(trees.find(tree => tree.id === Number(id)) || null)
   }
 
   const closeModal = (): void => {
@@ -47,23 +47,29 @@ const TreeDetails: FC<Props> = ({ trees }) => {
         <>
           <div className="details-left">
             <div className="details-left__species">
-              <h1 
+              <h1
                 className="details-left__species__common"
                 data-cy="details-common"
-              >{tree.speciesCommon}</h1>
-              <p 
+              >
+                {tree.speciesCommon}
+              </h1>
+              <p
                 className="details-left__species__sci"
                 data-cy="details-sci"
-              >{tree.speciesSci}</p>
+              >
+                {tree.speciesSci}
+              </p>
             </div>
-            <div 
+            <div
               className="details-left__location"
               data-cy="details-location"
             >
               <p>{tree.address}</p>
-              <p className="details-left__location__neighborhood">{tree.neighborhood}</p>
+              <p className="details-left__location__neighborhood">
+                {tree.neighborhood}
+              </p>
             </div>
-            <table 
+            <table
               className="details-left__table"
               data-cy="details-table"
             >
@@ -82,7 +88,7 @@ const TreeDetails: FC<Props> = ({ trees }) => {
                 </tr>
                 <tr>
                   <td>Washington native:</td>
-                  <td>{tree.isNative === "true" ? "yes" : "no"}</td>
+                  <td>{tree.isNative ? "yes" : "no"}</td>
                 </tr>
               </tbody>
             </table>
@@ -98,11 +104,13 @@ const TreeDetails: FC<Props> = ({ trees }) => {
               />
             </div>
           </div>
-          <button 
-            className="modal-close" 
+          <button
+            className="modal-close"
             onClick={closeModal}
             data-cy="modal-close"
-          >close</button>
+          >
+            close
+          </button>
         </>
       )}
     </Modal>

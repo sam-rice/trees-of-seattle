@@ -21,9 +21,7 @@ interface formInputs {
 }
 
 const NewTreeContainer: FC<Props> = ({ addTree }) => {
-  const [isLoading, setIsLoading] = useState(false)
   const [addressError, setAddressError] = useState(false)
-  // const [addressError, setAddressError] = useState<string | null>(null)
 
   const navigate = useNavigate()
 
@@ -75,12 +73,7 @@ const NewTreeContainer: FC<Props> = ({ addTree }) => {
 
   return (
     <main className="form-main">
-      {!isLoading && <NewTreeForm postTree={postTree} addressError={addressError}/>}
-      {/* {addressError && (
-        <h2>
-          Address could not be found. Please try reformatting the address.
-        </h2>
-      )} */}
+      <NewTreeForm postTree={postTree} addressError={addressError}/>
     </main>
   )
 }
