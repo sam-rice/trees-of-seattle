@@ -35,7 +35,7 @@ const NewTreeContainer: FC<Props> = ({ addTree }) => {
       setAddressError(true)
       return
     }
-
+    
     const body = {
       speciesCommon,
       speciesSci,
@@ -57,9 +57,11 @@ const NewTreeContainer: FC<Props> = ({ addTree }) => {
         "Content-Type": "application/json",
       },
     }
+    console.log("body:", JSON.stringify(body))
     const response = await fetch("http://localhost:3001/v1/trees", settings)
     const newTree = await response.json()
-    addTree(cleanTreeObject(newTree))
+    console.log(newTree)
+    // addTree(cleanTreeObject(newTree))
     navigate("/")
   }
 
