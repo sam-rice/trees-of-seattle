@@ -1,4 +1,4 @@
-import { ReactElement, useState, FC } from "react"
+import { useState, FC } from "react"
 import { useNavigate } from "react-router-dom"
 
 import "./_NewTreeContainer.scss"
