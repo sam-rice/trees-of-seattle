@@ -42,7 +42,7 @@ A Cypress acceptance test suite is also included with the project. See installat
 
 ### Project Context
 
-Trees of Seattle 
+Trees of Seattle was created as my final solo project for the third (3/4) section of Turing School of Software & Design's Front-End Development program. I was given about seven days to complete the project, and decided to make my project full-stack. I was able to self-teach myself Postgres and Knex within the timeframe, and created the [backend](https://github.com/sam-rice/trees-of-seattle-server) for the project in order to have the user-submitted data persist and to support a number of contributors. 
 
 ### Additional Dependencies
 
