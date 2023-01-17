@@ -28,9 +28,15 @@ const MapView: FC<Props> = ({ trees }) => {
 
   const markers = displayedTrees.map((tree: TreeObject) => {
     return (
-      <Marker position={[Number(tree.lat), Number(tree.long)]} key={tree.id} >
+      <Marker 
+        position={[Number(tree.lat), Number(tree.long)]} 
+        key={tree.id} 
+      >
         <Popup minWidth={351}>
-          <PopupContent data={tree} goToDetails={goToDetails} />
+          <PopupContent 
+            data={tree} 
+            goToDetails={goToDetails} 
+          />
         </Popup>
       </Marker>
     )
@@ -70,7 +76,6 @@ const MapView: FC<Props> = ({ trees }) => {
           </MapContainer>
         </div>
       </main>
-
       <Outlet />
     </>
   )
