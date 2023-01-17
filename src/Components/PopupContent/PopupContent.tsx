@@ -43,10 +43,10 @@ const PopupContent: FC<Props> = ({ data, goToDetails }) => {
               <td>approx. age:</td>
               <td>{age} years</td>
             </tr>
-            <tr>
+            {height && <tr>
               <td>approx. height:</td>
               <td>{height} feet</td>
-            </tr>
+            </tr>}
           </tbody>
         </table>
       </div>
@@ -57,11 +57,12 @@ const PopupContent: FC<Props> = ({ data, goToDetails }) => {
           data-cy="popup-button"
         >view more</button>
         <div className="popup-img-container">
-          <img 
+          {imageURL && <img 
             className="popup-img-container__img" 
             src={imageURL}
+            alt={`user-submitted photo of a ${speciesCommon}`}
             data-cy="popup-thumbnail"
-          />
+          />}
         </div>
         <span data-cy="popup-author">posted by: {author}</span>
       </div>

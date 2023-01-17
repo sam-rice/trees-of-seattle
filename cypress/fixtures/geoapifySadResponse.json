@@ -1,0 +1,73 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+      {
+          "type": "Feature",
+          "properties": {
+              "datasource": {
+                  "sourcename": "openstreetmap",
+                  "attribution": "© OpenStreetMap contributors",
+                  "license": "Open Database License",
+                  "url": "https://www.openstreetmap.org/copyright"
+              },
+              "country": "United States",
+              "country_code": "us",
+              "state": "Washington",
+              "county": "King County",
+              "city": "Seattle",
+              "postcode": "98117",
+              "district": "Sunset Hill",
+              "suburb": "Ballard",
+              "lon": -122.39619764646466,
+              "lat": 47.677938454545455,
+              "state_code": "WA",
+              "formatted": "3029 Northwest 68th Street, Seattle, WA 98117, United States of America",
+              "address_line1": "3029 Northwest 68th Street",
+              "address_line2": "Seattle, WA 98117, United States of America",
+              "timezone": {
+                  "name": "America/Los_Angeles",
+                  "offset_STD": "-08:00",
+                  "offset_STD_seconds": -28800,
+                  "offset_DST": "-07:00",
+                  "offset_DST_seconds": -25200,
+                  "abbreviation_STD": "PST",
+                  "abbreviation_DST": "PDT"
+              },
+              "result_type": "building",
+              "rank": {
+                  "importance": -0.8399999999999999,
+                  "popularity": 4.596616143067373,
+                  "confidence": 1,
+                  "confidence_city_level": 1,
+                  "confidence_street_level": 1,
+                  "match_type": "full_match"
+              },
+              "place_id": "5158945f4d5b995ec0599c7cf1afc6d64740f00102f90170a1583a00000000c00203"
+          },
+          "geometry": {
+              "type": "Point",
+              "coordinates": [
+                  -122.39619764646466,
+                  47.677938454545455
+              ]
+          },
+          "bbox": [
+              -122.39624764646,
+              47.677888454545,
+              -122.39614764646,
+              47.677988454545
+          ]
+      }
+  ],
+  "query": {
+      "text": "3029 NW 68th St Seattle WA USA",
+      "parsed": {
+          "housenumber": "3029",
+          "street": "nw 68th st",
+          "city": "seattle",
+          "state": "wa",
+          "country": "usa",
+          "expected_type": "building"
+      }
+  }
+}

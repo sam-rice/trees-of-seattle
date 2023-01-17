@@ -3,12 +3,13 @@ import { useNavigate } from "react-router-dom"
 
 import "./_NewTreeContainer.scss"
 import NewTreeForm from "../NewTreeForm/NewTreeForm"
+import { cleanTreeObject } from "../../CleanerUtilities/cleanTreesData"
 
 interface Props {
   addTree: Function
 }
 
-interface formInputs {
+interface FormInputs {
   speciesCommon: string
   speciesSci: string
   isNative: boolean
@@ -21,13 +22,11 @@ interface formInputs {
 }
 
 const NewTreeContainer: FC<Props> = ({ addTree }) => {
-  const [isLoading, setIsLoading] = useState(false)
   const [addressError, setAddressError] = useState(false)
-  // const [addressError, setAddressError] = useState<string | null>(null)
 
   const navigate = useNavigate()
 
-  const postTree = async (formInputs: formInputs) => {
+  const postTree = async (formInputs: FormInputs) => {
     const { speciesCommon, speciesSci, isNative, address, height, circ, age, author, imageURL } =
       formInputs
     const [lat, long, district, street] = await getCoordinates(formInputs.address)
@@ -36,17 +35,17 @@ const NewTreeContainer: FC<Props> = ({ addTree }) => {
       setAddressError(true)
       return
     }
-
+    
     const body = {
       speciesCommon,
       speciesSci,
       isNative,
       address,
-      height,
-      circ,
+      height: height ? height : null,
+      circ: circ ? circ : null,
       age,
       author,
-      imageURL,
+      imageURL: imageURL ? imageURL : null,
       neighborhood: district ? district : null,
       lat: lat,
       long: long,
@@ -58,9 +57,9 @@ const NewTreeContainer: FC<Props> = ({ addTree }) => {
         "Content-Type": "application/json",
       },
     }
-    const response = await fetch("http://localhost:3001/v1/trees", settings)
+    const response = await fetch("https://radiant-harbor-65607.herokuapp.com/v1/trees", settings)
     const newTree = await response.json()
-    addTree(newTree)
+    addTree(cleanTreeObject(newTree))
     navigate("/")
   }
 
@@ -75,12 +74,7 @@ const NewTreeContainer: FC<Props> = ({ addTree }) => {
 
   return (
     <main className="form-main">
-      {!isLoading && <NewTreeForm postTree={postTree} addressError={addressError}/>}
-      {/* {addressError && (
-        <h2>
-          Address could not be found. Please try reformatting the address.
-        </h2>
-      )} */}
+      <NewTreeForm postTree={postTree} addressError={addressError}/>
     </main>
   )
 }

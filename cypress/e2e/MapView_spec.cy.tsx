@@ -5,7 +5,7 @@ describe("Map View - Site Load", () => {
     cy.intercept(
       {
         method: "GET",
-        url: "http://localhost:3001/v1/trees",
+        url: "https://radiant-harbor-65607.herokuapp.com/v1/trees",
       },
       {
         fixture: "trees.json",
@@ -39,7 +39,7 @@ describe("Map View - Popup Content", () => {
     cy.intercept(
       {
         method: "GET",
-        url: "http://localhost:3001/v1/trees",
+        url: "https://radiant-harbor-65607.herokuapp.com/v1/trees",
       },
       {
         fixture: "trees.json",
@@ -71,8 +71,9 @@ describe("Map View - Popup Content", () => {
     cy.get('[data-cy="popup-author"]').should("have.text", "posted by: Peter Tilton")
   })
 
-  it("should display the tree's thumbnail image", () => {
+  it("should display the tree's thumbnail with alt attribute", () => {
     cy.get('[data-cy="popup-thumbnail"]').invoke("attr", "src").should("eq", "https://upload.wikimedia.org/wikipedia/commons/d/dc/Cedrus_deodara_Manali_2.jpg")
+    cy.get('[data-cy="popup-thumbnail"]').invoke("attr", "alt").should("eq", "user-submitted photo of a Himalayan Cedar")
   })
 
   it("should have a button to navigate to the tree's details", () => {
@@ -81,12 +82,37 @@ describe("Map View - Popup Content", () => {
   })
 })
 
+describe("Map View - Popup Content (missing data)", () => {
+  beforeEach(() => {
+    cy.intercept(
+      {
+        method: "GET",
+        url: "https://radiant-harbor-65607.herokuapp.com/v1/trees",
+      },
+      {
+        fixture: "trees.json",
+      }
+    )
+    cy.visit("http://localhost:3000")
+    cy.wait(1000)
+    cy.get('.leaflet-container').click(585, 45)
+  })
+
+  it("should only display a table row for height if the data is available", () => {
+    cy.get('.leaflet-container').should("not.contain", "approx. height:")
+  })
+
+  it("should only try to render a thumbnail if there is image data available", () => {
+    cy.get('[data-cy="popup-thumbnail"]').should("not.exist")
+  })
+})
+
 describe("Map View - Filter", () => {
   beforeEach(() => {
     cy.intercept(
       {
         method: "GET",
-        url: "http://localhost:3001/v1/trees",
+        url: "https://radiant-harbor-65607.herokuapp.com/v1/trees",
       },
       {
         fixture: "trees.json",

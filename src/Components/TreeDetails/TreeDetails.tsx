@@ -14,7 +14,7 @@ interface Props {
 const TreeDetails: FC<Props> = ({ trees }) => {
   const { id } = useParams()
   const [isOpen, setIsOpen] = useState(true)
-  const [tree, setTree] = useState<TreeObject | null >(null)
+  const [tree, setTree] = useState<TreeObject | null>(null)
 
   const navigate = useNavigate()
   ReactModal.setAppElement("#root")
@@ -24,7 +24,7 @@ const TreeDetails: FC<Props> = ({ trees }) => {
   }, [trees])
 
   const findTree = (): void => {
-    setTree(trees.find(tree => tree.id === id) || null)
+    setTree(trees.find(tree => tree.id === Number(id)) || null)
   }
 
   const closeModal = (): void => {
@@ -47,23 +47,29 @@ const TreeDetails: FC<Props> = ({ trees }) => {
         <>
           <div className="details-left">
             <div className="details-left__species">
-              <h1 
+              <h1
                 className="details-left__species__common"
                 data-cy="details-common"
-              >{tree.speciesCommon}</h1>
-              <p 
+              >
+                {tree.speciesCommon}
+              </h1>
+              <p
                 className="details-left__species__sci"
                 data-cy="details-sci"
-              >{tree.speciesSci}</p>
+              >
+                {tree.speciesSci}
+              </p>
             </div>
-            <div 
+            <div
               className="details-left__location"
               data-cy="details-location"
             >
               <p>{tree.address}</p>
-              <p className="details-left__location__neighborhood">{tree.neighborhood}</p>
+              <p className="details-left__location__neighborhood">
+                {tree.neighborhood}
+              </p>
             </div>
-            <table 
+            <table
               className="details-left__table"
               data-cy="details-table"
             >
@@ -72,17 +78,21 @@ const TreeDetails: FC<Props> = ({ trees }) => {
                   <td>approx. age:</td>
                   <td>{tree.age} years</td>
                 </tr>
-                <tr>
-                  <td>approx. height:</td>
-                  <td>{tree.height} feet</td>
-                </tr>
-                <tr>
-                  <td>base circumference:</td>
-                  <td>{tree.circ} inches</td>
-                </tr>
+                {tree.height && (
+                  <tr>
+                    <td>approx. height:</td>
+                    <td>{tree.height} feet</td>
+                  </tr>
+                )}
+                {tree.circ && (
+                  <tr>
+                    <td>base circumference:</td>
+                    <td>{tree.circ} inches</td>
+                  </tr>
+                )}
                 <tr>
                   <td>Washington native:</td>
-                  <td>{tree.isNative === "true" ? "yes" : "no"}</td>
+                  <td>{tree.isNative ? "yes" : "no"}</td>
                 </tr>
               </tbody>
             </table>
@@ -90,19 +100,24 @@ const TreeDetails: FC<Props> = ({ trees }) => {
             <p data-cy="details-author">posted by: {tree.author}</p>
           </div>
           <div className="details-right">
-            <div className="details-right__img-container">
-              <img
-                className="details-right__img-container__img"
-                src={tree.imageURL}
-                data-cy="details-image"
-              />
-            </div>
+            {tree.imageURL && (
+              <div className="details-right__img-container">
+                <img
+                  className="details-right__img-container__img"
+                  src={tree.imageURL}
+                  alt={`user-submitted photo of a ${tree.speciesCommon}`}
+                  data-cy="details-image"
+                />
+              </div>
+            )}
           </div>
-          <button 
-            className="modal-close" 
+          <button
+            className="modal-close"
             onClick={closeModal}
             data-cy="modal-close"
-          >close</button>
+          >
+            close
+          </button>
         </>
       )}
     </Modal>

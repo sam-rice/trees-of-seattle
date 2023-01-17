@@ -5,7 +5,7 @@ describe("Tree Details View", () => {
     cy.intercept(
       {
         method: "GET",
-        url: "http://localhost:3001/v1/trees",
+        url: "https://radiant-harbor-65607.herokuapp.com/v1/trees",
       },
       {
         fixture: "trees.json",
@@ -45,11 +45,36 @@ describe("Tree Details View", () => {
 
   it("should display the tree's image", () => {
     cy.get('[data-cy="details-image"]').invoke("attr", "src").should("eq", "https://albersvistagardens.org/wp-content/uploads/madronas_lowangle.jpg")
+    cy.get('[data-cy="details-image"]').invoke("attr", "alt").should("eq", "user-submitted photo of a Madrona")
   })
 
   it("should allow the user to return to close the modal and return to the map view", () => {
     cy.get('[data-cy="modal-close"]').click()
     cy.get(".ReactModal__Overlay").should("not.be.visible")
     cy.url().should("eq", "http://localhost:3000/")
+  })
+})
+
+describe("Tree Details View (missing data)", () => {
+  beforeEach(() => {
+    cy.intercept(
+      {
+        method: "GET",
+        url: "https://radiant-harbor-65607.herokuapp.com/v1/trees",
+      },
+      {
+        fixture: "trees.json",
+      }
+    )
+    cy.visit("http://localhost:3000/4")
+  })
+
+  it("should not display table rows for unavailable data", () => {
+    cy.get('[data-cy="details-table"] tr').should("not.contain", "approx. height:")
+    cy.get('[data-cy="details-table"] tr').should("not.contain", "base circumference:")
+  })
+
+  it("should not try to render an image if there is no image data available", () => {
+    cy.get('[data-cy="details-image"]').should("not.exist")
   })
 })
