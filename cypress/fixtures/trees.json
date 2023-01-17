@@ -11,8 +11,8 @@
     "img_url": "https://albersvistagardens.org/wp-content/uploads/madronas_lowangle.jpg",
     "address": "6210 36th Ave NE",
     "neighborhood": "Bryant",
-    "lat": "47.674370",
-    "long": "-122.288648"
+    "lat": 47.674370,
+    "long": -122.288648
   },
   {
     "id": 2,
@@ -26,8 +26,8 @@
     "img_url": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Cedrus_deodara_Manali_2.jpg",
     "address": "1923 Naomi Pl",
     "neighborhood": "Ravenna",
-    "lat": "47.673290",
-    "long": "-122.306720"
+    "lat": 47.673290,
+    "long": -122.306720
   },
   {
     "id": 3,
@@ -41,8 +41,8 @@
     "img_url": "https://cdn.britannica.com/34/118234-050-12C9BAC8/Douglas-fir.jpg",
     "address": "1213 NW Culbertson Drive",
     "neighborhood": "Llandover Woods",
-    "lat": "47.731810",
-    "long": "-122.372400"
+    "lat": 47.731810,
+    "long": -122.372400
   },
   {
     "id": 4,
@@ -56,7 +56,7 @@
     "img_url": null,
     "address": "6049 30th Ave NE",
     "neighborhood": null,
-    "lat": "47.673530",
-    "long": "-122.295690"
+    "lat": 47.673530,
+    "long": -122.295690
   }
 ]

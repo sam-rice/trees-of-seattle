@@ -18,7 +18,7 @@ const App: FC = () => {
   }, [])
 
   const getAllTrees = async () => {
-    const response = await fetch("http://localhost:3001/v1/trees")
+    const response = await fetch("https://radiant-harbor-65607.herokuapp.com/v1/trees")
     const data: DBTreeObject[] = await response.json()
     setTrees(cleanTreesData(data))
   }

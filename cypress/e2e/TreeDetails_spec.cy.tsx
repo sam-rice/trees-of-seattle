@@ -5,7 +5,7 @@ describe("Tree Details View", () => {
     cy.intercept(
       {
         method: "GET",
-        url: "http://localhost:3001/v1/trees",
+        url: "https://radiant-harbor-65607.herokuapp.com/v1/trees",
       },
       {
         fixture: "trees.json",
@@ -60,7 +60,7 @@ describe("Tree Details View (missing data)", () => {
     cy.intercept(
       {
         method: "GET",
-        url: "http://localhost:3001/v1/trees",
+        url: "https://radiant-harbor-65607.herokuapp.com/v1/trees",
       },
       {
         fixture: "trees.json",

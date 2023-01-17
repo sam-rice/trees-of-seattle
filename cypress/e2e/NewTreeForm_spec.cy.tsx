@@ -5,7 +5,7 @@ describe("New Tree Form", () => {
     cy.intercept(
       {
         method: "GET",
-        url: "http://localhost:3001/v1/trees",
+        url: "https://radiant-harbor-65607.herokuapp.com/v1/trees",
       },
       {
         fixture: "trees.json",
@@ -70,7 +70,7 @@ describe("New Tree Form - Successful POST", () => {
     cy.intercept(
       {
         method: "GET",
-        url: "http://localhost:3001/v1/trees",
+        url: "https://radiant-harbor-65607.herokuapp.com/v1/trees",
       },
       {
         fixture: "trees.json",
@@ -79,10 +79,19 @@ describe("New Tree Form - Successful POST", () => {
     cy.intercept(
       {
         method: "POST",
-        url: "http://localhost:3001/v1/trees",
+        url: "https://radiant-harbor-65607.herokuapp.com/v1/trees",
       },
       {
         fixture: "newTree.json",
+      }
+    )
+    cy.intercept(
+      {
+        method: "GET",
+        url: "https://api.geoapify.com/v1/geocode/search?text=foobar%20Seattle%20WA%20USA&apiKey=18e7ab79ca46494ab3da1a3f545a4cc2",
+      },
+      {
+        fixture: "geoapifySadResponse.json",
       }
     )
     cy.intercept(
@@ -136,7 +145,7 @@ describe("New Tree Form - Successful POST", () => {
     cy.get('[data-cy="form-submit"]').click()
     cy.get('.leaflet-container').click(285, 30)
     cy.get('[data-cy="popup-button"]').click()
-    cy.url().should("eq", "http://localhost:3000/4")
+    cy.url().should("eq", "http://localhost:3000/5")
   })
 
   it("should display the correct data in the newly-created tree's detail view", () => {

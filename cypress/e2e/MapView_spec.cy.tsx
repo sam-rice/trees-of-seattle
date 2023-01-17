@@ -5,7 +5,7 @@ describe("Map View - Site Load", () => {
     cy.intercept(
       {
         method: "GET",
-        url: "http://localhost:3001/v1/trees",
+        url: "https://radiant-harbor-65607.herokuapp.com/v1/trees",
       },
       {
         fixture: "trees.json",
@@ -39,7 +39,7 @@ describe("Map View - Popup Content", () => {
     cy.intercept(
       {
         method: "GET",
-        url: "http://localhost:3001/v1/trees",
+        url: "https://radiant-harbor-65607.herokuapp.com/v1/trees",
       },
       {
         fixture: "trees.json",
@@ -87,7 +87,7 @@ describe("Map View - Popup Content (missing data)", () => {
     cy.intercept(
       {
         method: "GET",
-        url: "http://localhost:3001/v1/trees",
+        url: "https://radiant-harbor-65607.herokuapp.com/v1/trees",
       },
       {
         fixture: "trees.json",
@@ -112,7 +112,7 @@ describe("Map View - Filter", () => {
     cy.intercept(
       {
         method: "GET",
-        url: "http://localhost:3001/v1/trees",
+        url: "https://radiant-harbor-65607.herokuapp.com/v1/trees",
       },
       {
         fixture: "trees.json",

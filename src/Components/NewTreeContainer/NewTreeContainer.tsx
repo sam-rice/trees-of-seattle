@@ -57,7 +57,7 @@ const NewTreeContainer: FC<Props> = ({ addTree }) => {
         "Content-Type": "application/json",
       },
     }
-    const response = await fetch("http://localhost:3001/v1/trees", settings)
+    const response = await fetch("https://radiant-harbor-65607.herokuapp.com/v1/trees", settings)
     const newTree = await response.json()
     addTree(cleanTreeObject(newTree))
     navigate("/")
