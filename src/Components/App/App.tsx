@@ -11,9 +11,10 @@ import { TreeObject, DBTreeObject } from "../../TypeUtilities/Interfaces"
 import { cleanTreesData } from "../../CleanerUtilities/cleanTreesData"
 
 const App: FC = () => {
-  const navigate = useNavigate()
   const [trees, setTrees] = useState<TreeObject[]>([])
   const [error, setError] = useState(null)
+  
+  const navigate = useNavigate()
 
   useEffect(() => {
     getAllTrees()
