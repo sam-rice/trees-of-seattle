@@ -32,7 +32,7 @@ Trees of Seattle is a full-stack React/TypeScript web application that allows us
 
 Trees of Seattle was designed with device-responsiveness in mind, and strives for a minimalistic, intuitive UI.
 
-A Heroku-hosted [Node/Express backend](https://github.com/sam-rice/trees-of-seattle-server) serves up data from a Postgres database. 
+A Heroku-hosted [Node/Express backend](https://github.com/sam-rice/trees-of-seattle-server) serves up data from a PostgreSQL database. 
 
 A Cypress acceptance test suite is also included with the project. See installation instructions below for running the application and/or tests locally.
 
