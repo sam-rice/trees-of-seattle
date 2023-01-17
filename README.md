@@ -28,9 +28,9 @@
 
 ### Abstract
 
-Trees of Seattle is a full-stack React/TypeScript web application that allows users to explore a database of trees within the Seattle metro area using an interactive map (via [Leaflet](https://leafletjs.com/)). Trees are displayed as individual map points, from which the user can navigate to a detailed view for each tree. Each tree's details include common and scientific species names, an image, approximate height, age, and circumference, and more. Users can also contribute to the database by posting a tree of their own for other users to discover. 
+Trees of Seattle is a full-stack React/TypeScript web application that allows users to explore a database of trees within the Seattle metro area using an interactive map. Trees are displayed as individual map points, from which the user can navigate to a detailed view for each tree. Each tree's details include common and scientific species names, an image, approximate height, age, and circumference, and more. Users can also contribute to the database by posting a tree of their own for other users to discover. The app's target user is the urban nature-lover with a taste for data and maps.
 
-The app was designed with device-responsiveness in mind, and strives for a minimalistic, intuitive UI.
+Trees of Seattle was designed with device-responsiveness in mind, and strives for a minimalistic, intuitive UI.
 
 A Heroku-hosted [Node/Express backend](https://github.com/sam-rice/trees-of-seattle-server) serves up data from a Postgres database. 
 
@@ -42,11 +42,12 @@ A Cypress acceptance test suite is also included with the project. See installat
 
 ### Project Context
 
-Trees of Seattle was created as my final solo project for the third (3/4) section of Turing School of Software & Design's Front-End Development program. I was given about seven days to complete the project, and decided to make my project full-stack. I was able to self-teach myself Postgres and Knex within the timeframe, and created the [backend](https://github.com/sam-rice/trees-of-seattle-server) for the project in order to have the user-submitted data persist and to support a number of contributors. 
+Trees of Seattle was created as my final solo project for the third section (3 of 4) of Turing School of Software & Design's Front-End Development program. I was given about seven days to complete the project, and decided to make my project full-stack. I was able to self-teach myself Postgres and Knex.js within the timeframe, creating a [backend](https://github.com/sam-rice/trees-of-seattle-server) for the project that allows user-submitted data to persist, and which supports a community of users.
 
 ### Additional Dependencies
 
 - [Leaflet.js](https://leafletjs.com/)
+- [Geoapify](https://www.geoapify.com/)
 - [react-modal](https://www.npmjs.com/package/react-modal)
 
 ### Installation Instructions
