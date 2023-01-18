@@ -12,7 +12,7 @@ import { cleanTreesData } from "../../CleanerUtilities/cleanTreesData"
 
 const App: FC = () => {
   const [trees, setTrees] = useState<TreeObject[]>([])
-  const [error, setError] = useState(null)
+  const [error, setError] = useState("")
   
   const navigate = useNavigate()
 
@@ -26,13 +26,16 @@ const App: FC = () => {
 
   const getAllTrees = async () => {
     try {
-      const response = await fetch("https://radiant-harbor-65607.herokuapp.com/v1/trees")
+      // const response = await fetch("https://radiant-harbor-65607.herokuapp.com/v1/trees")
+      const response = await fetch("http://localhost:3001/v1/trees")
       if (!response.ok) throw Error(response.statusText)
-
       const data: DBTreeObject[] = await response.json()
       setTrees(cleanTreesData(data))
-    } catch (error: any) {
-      setError(error)
+    } catch (error) {
+      let message
+      if (error instanceof Error) message = error.message
+      else message = String(error)
+      setError(message)
     }
   }
 

@@ -31,3 +31,30 @@ export interface DBTreeObject {
   created_at: string
   updated_at: string
 }
+
+export interface FormInputs {
+  speciesCommon: string
+  speciesSci: string
+  isNative: boolean
+  address: string
+  height: string
+  circ: string
+  age: string
+  author: string
+  imageURL: string
+}
+
+export interface PostBody {
+  speciesCommon: string
+  speciesSci: string
+  isNative: boolean
+  address: string
+  height: string | null
+  circ: string | null
+  age: string | null
+  author: string
+  imageURL: string | null
+  neighborhood: string | null
+  lat: number
+  long: number
+}
