@@ -7,8 +7,12 @@ import {
   cleanTreeObject,
   formatBody,
 } from "../../CleanerUtilities/cleanTreesData"
+import {
+  FormInputs,
+  PostBody,
+  DBTreeObject,
+} from "../../TypeUtilities/Interfaces"
 import { getCoordinates, postTree } from "../../api-calls"
-import { FormInputs, PostBody, DBTreeObject } from "../../TypeUtilities/Interfaces"
 
 interface Props {
   addTreeToState: Function

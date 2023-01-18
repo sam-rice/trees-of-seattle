@@ -92,10 +92,13 @@ const NewTreeForm: FC<Props> = ({ submitTree, addressError }) => {
                 data-cy="form-address"
               />
               , Seattle, Washington
-              <p 
-                className={addressError ? "address-error" : "address-error-hidden"} 
+              <p
+                className={
+                  addressError ? "address-error" : "address-error-hidden"
+                }
                 data-cy="address-error"
-              >* invalid address
+              >
+                * invalid address
               </p>
             </label>
           </div>
@@ -168,9 +171,6 @@ const NewTreeForm: FC<Props> = ({ submitTree, addressError }) => {
             />
             <span className="optional-field">{"(opt.)"}</span>
           </label>
-          {/* <div className="form__top__right__img-frame">
-            <input type="file" />
-          </div> */}
         </div>
       </div>
       <button
