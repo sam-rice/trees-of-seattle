@@ -3,9 +3,12 @@ import { useNavigate } from "react-router-dom"
 
 import "./_NewTreeContainer.scss"
 import NewTreeForm from "../NewTreeForm/NewTreeForm"
-import { cleanTreeObject, formatBody } from "../../CleanerUtilities/cleanTreesData"
+import {
+  cleanTreeObject,
+  formatBody,
+} from "../../CleanerUtilities/cleanTreesData"
 import { getCoordinates } from "../../api-calls"
-import { FormInputs } from "../../TypeUtilities/Interfaces"
+import { FormInputs, PostBody } from "../../TypeUtilities/Interfaces"
 
 interface Props {
   addTree: Function
@@ -22,7 +25,6 @@ const NewTreeContainer: FC<Props> = ({ addTree }) => {
   }, [postError])
 
   const postTree = async (formInputs: FormInputs) => {
-
     try {
       const geoResponse = await getCoordinates(formInputs.address)
       if (!geoResponse.ok) throw Error(geoResponse.statusText)
@@ -34,7 +36,7 @@ const NewTreeContainer: FC<Props> = ({ addTree }) => {
         return
       }
 
-      const body = formatBody(formInputs, district, lat, lon)
+      const body: PostBody = formatBody(formInputs, district, lat, lon)
       const settings = {
         method: "POST",
         body: JSON.stringify(body),
@@ -47,7 +49,6 @@ const NewTreeContainer: FC<Props> = ({ addTree }) => {
         // "https://radiant-harbor-65607.herokuapp.com/v1/trees",
         settings
       )
-
       if (!response.ok) throw Error(response.statusText)
       const newTree = await response.json()
       addTree(cleanTreeObject(newTree))
