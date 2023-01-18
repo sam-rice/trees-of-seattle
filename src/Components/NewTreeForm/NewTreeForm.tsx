@@ -3,11 +3,11 @@ import { FC, useState } from "react"
 import "./_NewTreeForm.scss"
 
 interface Props {
-  postTree: Function
+  submitTree: Function
   addressError: boolean
 }
 
-const NewTreeForm: FC<Props> = ({ postTree, addressError }) => {
+const NewTreeForm: FC<Props> = ({ submitTree, addressError }) => {
   const [speciesCommon, setSpeciesCommon] = useState("")
   const [speciesSci, setSpeciesSci] = useState("")
   const [isNative, setIsNative] = useState(false)
@@ -20,7 +20,7 @@ const NewTreeForm: FC<Props> = ({ postTree, addressError }) => {
 
   const handleSubmit = (e: React.SyntheticEvent): void => {
     e.preventDefault()
-    postTree({
+    submitTree({
       speciesCommon,
       speciesSci,
       isNative,

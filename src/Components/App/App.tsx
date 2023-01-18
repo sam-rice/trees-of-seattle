@@ -39,7 +39,7 @@ const App: FC = () => {
     }
   }
 
-  const addTree = (tree: TreeObject): void => {
+  const addTreeToState = (tree: TreeObject): void => {
     setTrees([...trees, tree])
   }
 
@@ -58,7 +58,7 @@ const App: FC = () => {
         </Route>
         <Route
           path="/new-tree"
-          element={<NewTreeContainer addTree={addTree} />}
+          element={<NewTreeContainer addTreeToState={addTreeToState} />}
         />
         <Route
           path="/error"
