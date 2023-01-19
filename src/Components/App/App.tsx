@@ -9,10 +9,11 @@ import ErrorPage from "../ErrorPage/ErrorPage"
 
 import { TreeObject, DBTreeObject } from "../../TypeUtilities/Interfaces"
 import { cleanTreesData } from "../../CleanerUtilities/cleanTreesData"
+import { fetchAllTrees } from "../../apiCalls"
 
 const App: FC = () => {
   const [trees, setTrees] = useState<TreeObject[]>([])
-  const [error, setError] = useState(null)
+  const [error, setError] = useState("")
   
   const navigate = useNavigate()
 
@@ -26,17 +27,19 @@ const App: FC = () => {
 
   const getAllTrees = async () => {
     try {
-      const response = await fetch("https://radiant-harbor-65607.herokuapp.com/v1/trees")
+      const response = await fetchAllTrees()
       if (!response.ok) throw Error(response.statusText)
-
       const data: DBTreeObject[] = await response.json()
       setTrees(cleanTreesData(data))
-    } catch (error: any) {
-      setError(error)
+    } catch (error) {
+      let message
+      if (error instanceof Error) message = error.message
+      else message = String(error)
+      setError(message)
     }
   }
 
-  const addTree = (tree: TreeObject): void => {
+  const addTreeToState = (tree: TreeObject): void => {
     setTrees([...trees, tree])
   }
 
@@ -55,7 +58,7 @@ const App: FC = () => {
         </Route>
         <Route
           path="/new-tree"
-          element={<NewTreeContainer addTree={addTree} />}
+          element={<NewTreeContainer addTreeToState={addTreeToState} />}
         />
         <Route
           path="/error"

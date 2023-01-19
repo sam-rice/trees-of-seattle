@@ -3,11 +3,11 @@ import { FC, useState } from "react"
 import "./_NewTreeForm.scss"
 
 interface Props {
-  postTree: Function
+  submitTree: Function
   addressError: boolean
 }
 
-const NewTreeForm: FC<Props> = ({ postTree, addressError }) => {
+const NewTreeForm: FC<Props> = ({ submitTree, addressError }) => {
   const [speciesCommon, setSpeciesCommon] = useState("")
   const [speciesSci, setSpeciesSci] = useState("")
   const [isNative, setIsNative] = useState(false)
@@ -20,7 +20,7 @@ const NewTreeForm: FC<Props> = ({ postTree, addressError }) => {
 
   const handleSubmit = (e: React.SyntheticEvent): void => {
     e.preventDefault()
-    postTree({
+    submitTree({
       speciesCommon,
       speciesSci,
       isNative,
@@ -92,10 +92,13 @@ const NewTreeForm: FC<Props> = ({ postTree, addressError }) => {
                 data-cy="form-address"
               />
               , Seattle, Washington
-              <p 
-                className={addressError ? "address-error" : "address-error-hidden"} 
+              <p
+                className={
+                  addressError ? "address-error" : "address-error-hidden"
+                }
                 data-cy="address-error"
-              >* invalid address
+              >
+                * invalid address
               </p>
             </label>
           </div>
@@ -168,9 +171,6 @@ const NewTreeForm: FC<Props> = ({ postTree, addressError }) => {
             />
             <span className="optional-field">{"(opt.)"}</span>
           </label>
-          {/* <div className="form__top__right__img-frame">
-            <input type="file" />
-          </div> */}
         </div>
       </div>
       <button
