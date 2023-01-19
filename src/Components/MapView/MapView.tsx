@@ -14,7 +14,7 @@ const MapView: FC<Props> = ({ trees }) => {
   const [filter, setFilter] = useState("")
   const navigate = useNavigate()
 
-  const goToDetails = (id: string | number) => {
+  const goToDetails = (id: string | number): void => {
     navigate(`/${id}`)
   }
 
