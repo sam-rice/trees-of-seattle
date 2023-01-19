@@ -9,7 +9,7 @@ import ErrorPage from "../ErrorPage/ErrorPage"
 
 import { TreeObject, DBTreeObject } from "../../TypeUtilities/Interfaces"
 import { cleanTreesData } from "../../CleanerUtilities/cleanTreesData"
-import { fetchAllTrees } from "../../api-calls"
+import { fetchAllTrees } from "../../apiCalls"
 
 const App: FC = () => {
   const [trees, setTrees] = useState<TreeObject[]>([])

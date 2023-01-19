@@ -12,7 +12,7 @@ import {
   PostBody,
   DBTreeObject,
 } from "../../TypeUtilities/Interfaces"
-import { getCoordinates, postTree } from "../../api-calls"
+import { getCoordinates, postTree } from "../../apiCalls"
 
 interface Props {
   addTreeToState: Function
