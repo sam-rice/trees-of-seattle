@@ -28,7 +28,7 @@
 
 ### Abstract
 
-Trees of Seattle is a full-stack React/TypeScript web application that allows users to explore a database of trees within the Seattle metro area using an interactive map. Trees are displayed as individual map points, from which the user can navigate to a detailed view for each tree. Each tree's details include common and scientific species names, an image, approximate height, age, and circumference, and more. Users can also contribute to the database by posting a tree of their own for other users to discover. The app's target user is the urban nature-lover with a taste for data and maps.
+Trees of Seattle is a full-stack React/TypeScript web application that allows users to explore a database of trees within the Seattle metro area using an interactive map. Trees are displayed as individual map points, from which the user can navigate to a detailed view for each tree. Each tree's details include common and scientific species names, an image, approximate height, age, circumference, and more. Users can also contribute to the database by posting a tree of their own for other users to discover. The app's target user is the urban nature-lover with a taste for data and maps.
 
 Trees of Seattle was designed with device-responsiveness in mind, and strives for a minimalistic, intuitive UI.
 
