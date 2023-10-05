@@ -4,15 +4,21 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
 
 import "./_MapView.scss"
 import PopupContent from "../PopupContent/PopupContent"
-import { TreeObject } from "../../TypeUtilities/Interfaces"
+import { ITree } from "../../TypeUtilities/Interfaces"
 
 interface Props {
-  trees: TreeObject[]
+  trees: ITree[]
 }
 
 const MapView: FC<Props> = ({ trees }) => {
   const [filter, setFilter] = useState("")
   const navigate = useNavigate()
+
+  const DEFAULT_MAP_ZOOM = 12
+  const TILE_LAYER_ATTRIBUTION =
+    '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+  const TILE_LAYER_URL =
+    "https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
 
   const goToDetails = (id: string | number): void => {
     navigate(`/${id}`)
@@ -26,16 +32,16 @@ const MapView: FC<Props> = ({ trees }) => {
       )
     : trees
 
-  const markers = displayedTrees.map((tree: TreeObject) => {
+  const markers = displayedTrees.map((tree: ITree) => {
     return (
-      <Marker 
-        position={[Number(tree.lat), Number(tree.long)]} 
-        key={tree.id} 
+      <Marker
+        position={[Number(tree.lat), Number(tree.long)]}
+        key={tree.id}
       >
         <Popup minWidth={351}>
-          <PopupContent 
-            data={tree} 
-            goToDetails={goToDetails} 
+          <PopupContent
+            data={tree}
+            goToDetails={goToDetails}
           />
         </Popup>
       </Marker>
@@ -57,20 +63,22 @@ const MapView: FC<Props> = ({ trees }) => {
               data-cy="marker-filter"
             />
           </label>
-          <button 
+          <button
             className="map-filter__button"
             onClick={() => setFilter("")}
-          >clear</button>
+          >
+            clear
+          </button>
         </div>
         <div id="map">
           <MapContainer
             center={[47.626395, -122.329386]}
-            zoom={12}
-            minZoom={12}
+            zoom={DEFAULT_MAP_ZOOM}
+            minZoom={DEFAULT_MAP_ZOOM}
           >
             <TileLayer
-              attribution='&copy; <a href="https://stadiamaps.com/">Stadia Maps</a>, &copy; <a href="https://openmaptiles.org/">OpenMapTiles</a> &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-              url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
+              attribution={TILE_LAYER_ATTRIBUTION}
+              url={TILE_LAYER_URL}
             />
             {markers}
           </MapContainer>

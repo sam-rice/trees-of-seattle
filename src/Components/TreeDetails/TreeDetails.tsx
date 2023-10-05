@@ -5,16 +5,16 @@ import Modal from "react-modal"
 import ReactModal from "react-modal"
 
 import "./_TreeDetails.scss"
-import { TreeObject } from "../../TypeUtilities/Interfaces"
+import { ITree } from "../../TypeUtilities/Interfaces"
 
 interface Props {
-  trees: TreeObject[]
+  trees: ITree[]
 }
 
 const TreeDetails: FC<Props> = ({ trees }) => {
   const { id } = useParams()
   const [isOpen, setIsOpen] = useState(true)
-  const [tree, setTree] = useState<TreeObject | null>(null)
+  const [tree, setTree] = useState<ITree | null>(null)
 
   const navigate = useNavigate()
   ReactModal.setAppElement("#root")

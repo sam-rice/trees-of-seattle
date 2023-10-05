@@ -5,13 +5,14 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 84vh;
+  height: 87%;
   width: 100vw;
 }
 
 .map-filter {
   z-index: 10;
   height: 5%;
+  margin-bottom: 1%;
 
   &__input {
     @include mixins.themeInput();
@@ -27,9 +28,8 @@
 }
 
 #map {
-  height: 94%;
+  height: 91%;
   width: 97vw;
-  margin-bottom: 1vw;
   z-index: 1;
 }
 

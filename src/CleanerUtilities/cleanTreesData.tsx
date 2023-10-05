@@ -1,15 +1,15 @@
 import {
-  TreeObject,
-  DBTreeObject,
-  FormInputs,
-  PostBody,
+  ITree,
+  ITreeDbRow,
+  IFormInputs,
+  IPostBody,
 } from "../TypeUtilities/Interfaces"
 
-export const cleanTreesData = (trees: DBTreeObject[]): TreeObject[] => {
+export const cleanTreesData = (trees: ITreeDbRow[]): ITree[] => {
   return trees.map(tree => cleanTreeObject(tree))
 }
 
-export const cleanTreeObject = (tree: DBTreeObject): TreeObject => ({
+export const cleanTreeObject = (tree: ITreeDbRow): ITree => ({
   id: tree.id,
   speciesCommon: tree.species_common,
   speciesSci: tree.species_sci,
@@ -26,11 +26,11 @@ export const cleanTreeObject = (tree: DBTreeObject): TreeObject => ({
 })
 
 export const formatBody = (
-  formInputs: FormInputs,
+  formInputs: IFormInputs,
   district: string,
   lat: number,
   lon: number
-): PostBody => {
+): IPostBody => {
   const {
     speciesCommon,
     speciesSci,
