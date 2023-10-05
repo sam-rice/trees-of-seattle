@@ -1,10 +1,10 @@
 import { FC } from "react"
 
 import "./_PopupContent.scss"
-import { TreeObject } from "../../TypeUtilities/Interfaces"
+import { ITree } from "../../TypeUtilities/Interfaces"
 
 interface Props {
-  data: TreeObject
+  data: ITree
   goToDetails: Function
 }
 

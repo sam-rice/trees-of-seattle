@@ -1,4 +1,4 @@
-export interface TreeObject {
+export interface ITree {
   id: number
   speciesCommon: string
   speciesSci: string
@@ -14,7 +14,7 @@ export interface TreeObject {
   long: string
 }
 
-export interface DBTreeObject {
+export interface ITreeDbRow {
   id: number
   species_common: string
   species_sci: string
@@ -32,7 +32,7 @@ export interface DBTreeObject {
   updated_at: string
 }
 
-export interface FormInputs {
+export interface IFormInputs {
   speciesCommon: string
   speciesSci: string
   isNative: boolean
@@ -44,7 +44,7 @@ export interface FormInputs {
   imageURL: string
 }
 
-export interface PostBody {
+export interface IPostBody {
   speciesCommon: string
   speciesSci: string
   isNative: boolean

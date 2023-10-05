@@ -1,24 +1,25 @@
 import { useState, FC, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
-import "./_NewTreeContainer.scss"
+import "./_NewTreePage.scss"
 import NewTreeForm from "../NewTreeForm/NewTreeForm"
 import {
   cleanTreeObject,
   formatBody,
 } from "../../CleanerUtilities/cleanTreesData"
 import {
-  FormInputs,
-  PostBody,
-  DBTreeObject,
+  IFormInputs,
+  IPostBody,
+  ITree,
+  ITreeDbRow,
 } from "../../TypeUtilities/Interfaces"
 import { getCoordinates, postTree } from "../../apiCalls"
 
 interface Props {
-  addTreeToState: Function
+  addTreeToState: (arg: ITree) => void
 }
 
-const NewTreeContainer: FC<Props> = ({ addTreeToState }) => {
+const NewTreePage: FC<Props> = ({ addTreeToState }) => {
   const [addressError, setAddressError] = useState(false)
   const [postError, setPostError] = useState("")
 
@@ -28,7 +29,7 @@ const NewTreeContainer: FC<Props> = ({ addTreeToState }) => {
     if (postError) navigate("/error")
   }, [postError])
 
-  const submitTree = async (formInputs: FormInputs) => {
+  const submitTree = async (formInputs: IFormInputs) => {
     try {
       const geoResponse = await getCoordinates(formInputs.address)
       if (!geoResponse.ok) throw Error(geoResponse.statusText)
@@ -38,7 +39,7 @@ const NewTreeContainer: FC<Props> = ({ addTreeToState }) => {
         setAddressError(true)
         return
       }
-      const body: PostBody = formatBody(formInputs, district, lat, lon)
+      const body: IPostBody = formatBody(formInputs, district, lat, lon)
       const settings = {
         method: "POST",
         body: JSON.stringify(body),
@@ -48,7 +49,7 @@ const NewTreeContainer: FC<Props> = ({ addTreeToState }) => {
       }
       const response = await postTree(settings)
       if (!response.ok) throw Error(response.statusText)
-      const newTree: DBTreeObject = await response.json()
+      const newTree: ITreeDbRow = await response.json()
       addTreeToState(cleanTreeObject(newTree))
       navigate("/")
     } catch (error) {
@@ -69,4 +70,4 @@ const NewTreeContainer: FC<Props> = ({ addTreeToState }) => {
   )
 }
 
-export default NewTreeContainer
+export default NewTreePage

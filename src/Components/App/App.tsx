@@ -4,15 +4,15 @@ import { Routes, Route, useNavigate } from "react-router-dom"
 import Header from "../Header/Header"
 import MapView from "../MapView/MapView"
 import TreeDetails from "../TreeDetails/TreeDetails"
-import NewTreeContainer from "../NewTreeContainer/NewTreeContainer"
+import NewTreePage from "../NewTreePage/NewTreePage"
 import ErrorPage from "../ErrorPage/ErrorPage"
 
-import { TreeObject, DBTreeObject } from "../../TypeUtilities/Interfaces"
+import { ITree, ITreeDbRow } from "../../TypeUtilities/Interfaces"
 import { cleanTreesData } from "../../CleanerUtilities/cleanTreesData"
 import { fetchAllTrees } from "../../apiCalls"
 
 const App: FC = () => {
-  const [trees, setTrees] = useState<TreeObject[]>([])
+  const [trees, setTrees] = useState<ITree[]>([])
   const [error, setError] = useState("")
   
   const navigate = useNavigate()
@@ -29,7 +29,7 @@ const App: FC = () => {
     try {
       const response = await fetchAllTrees()
       if (!response.ok) throw Error(response.statusText)
-      const data: DBTreeObject[] = await response.json()
+      const data: ITreeDbRow[] = await response.json()
       setTrees(cleanTreesData(data))
     } catch (error) {
       let message
@@ -39,7 +39,7 @@ const App: FC = () => {
     }
   }
 
-  const addTreeToState = (tree: TreeObject): void => {
+  const addTreeToState = (tree: ITree) => {
     setTrees([...trees, tree])
   }
 
@@ -58,7 +58,7 @@ const App: FC = () => {
         </Route>
         <Route
           path="/new-tree"
-          element={<NewTreeContainer addTreeToState={addTreeToState} />}
+          element={<NewTreePage addTreeToState={addTreeToState} />}
         />
         <Route
           path="/error"
