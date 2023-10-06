@@ -1,9 +1,10 @@
-import { FC, useState } from "react"
+import { FC, useState, SyntheticEvent } from "react"
 
 import "./_NewTreeForm.scss"
+import { IFormInputs } from "../../TypeUtilities/Interfaces"
 
 interface Props {
-  submitTree: Function
+  submitTree: (formInputs: IFormInputs) => void
   addressError: boolean
 }
 
@@ -18,7 +19,7 @@ const NewTreeForm: FC<Props> = ({ submitTree, addressError }) => {
   const [author, setAuthor] = useState("")
   const [imageURL, setImageURL] = useState("")
 
-  const handleSubmit = (e: React.SyntheticEvent): void => {
+  const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault()
     submitTree({
       speciesCommon,

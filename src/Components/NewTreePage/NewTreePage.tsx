@@ -9,14 +9,13 @@ import {
 } from "../../CleanerUtilities/cleanTreesData"
 import {
   IFormInputs,
-  IPostBody,
   ITree,
   ITreeDbRow,
 } from "../../TypeUtilities/Interfaces"
 import { getCoordinates, postTree } from "../../apiCalls"
 
 interface Props {
-  addTreeToState: (arg: ITree) => void
+  addTreeToState: (tree: ITree) => void
 }
 
 const NewTreePage: FC<Props> = ({ addTreeToState }) => {
@@ -27,19 +26,21 @@ const NewTreePage: FC<Props> = ({ addTreeToState }) => {
 
   useEffect(() => {
     if (postError) navigate("/error")
-  }, [postError])
+  }, [postError, navigate])
 
   const submitTree = async (formInputs: IFormInputs) => {
     try {
       const geoResponse = await getCoordinates(formInputs.address)
       if (!geoResponse.ok) throw Error(geoResponse.statusText)
+
       const data = await geoResponse.json()
       const { lat, lon, district, street } = data.features[0].properties
       if (!street) {
         setAddressError(true)
         return
       }
-      const body: IPostBody = formatBody(formInputs, district, lat, lon)
+
+      const body = formatBody(formInputs, district, lat, lon)
       const settings = {
         method: "POST",
         body: JSON.stringify(body),
@@ -49,6 +50,7 @@ const NewTreePage: FC<Props> = ({ addTreeToState }) => {
       }
       const response = await postTree(settings)
       if (!response.ok) throw Error(response.statusText)
+
       const newTree: ITreeDbRow = await response.json()
       addTreeToState(cleanTreeObject(newTree))
       navigate("/")
